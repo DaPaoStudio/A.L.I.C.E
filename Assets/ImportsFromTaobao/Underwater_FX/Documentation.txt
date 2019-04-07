@@ -1,0 +1,18 @@
+This Underwater FX pack provides a wide range of objects and effects to bring your underwater environment alive.
+
+Simply load the example "Underwater_FX.unity" scene, or drag your chosen asset from the Prefabs folder into the Hierarchy of your project.
+
+To tweak the particle effect settings then select it in the Hierarchy window and the particle parameters will be available to you in the Inspector window (on the right). The effect scale can be altered by changing the shape of the Box under the "Shape" settings. Note that to keep the particle density the same you'll want to alter the Rate (under "Emission") to keep in at the same ratio, ie if you double the width of the box then also double the particle count.
+
+The ScrollUV_Caustics.js script simulates a caustics type effect on your coral rocks; you'll notice that each of the Coral_Rock prefabs ending with "_caustics" contain 2 additional duplicates of the rock geometry, each with the "Caustics_mtl" assigned to them. The ScrollUV_Caustics.js has been assigned to these two duplicate meshs and you'll notice that, when selected, you'll see the script settings in the Inspector window. "Scroll Speed_X" and "Scroll Speed_Y" move the UVs of the caustics meshes at the speed assigned to these two parameters; by setting the scrolling direction of the scrolling UVS to be opposite (with Caustics A with two positive parameters and B with two negative ones) the "criss-cross" motion of the assigned texture simulates a caustics light effect.
+
+To further enhance your underwater environment visuals you should consider adding some of Unity's effects to the scene's camera. Some suggested settings can be found in the "Images Effects Settings" folder.
+
+Have fun!
+
+If you have any questions then please get in touch at bendurrant@rivermillstudios.com
+
+
+
+
+

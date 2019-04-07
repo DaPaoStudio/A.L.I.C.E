@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 630868e99722e5c49aa004a1777ce938
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Jnt_aleron_01_end_mml
+    100002: Jnt_aleron_01_end_mmr
+    100004: Jnt_aleron_01_mml
+    100006: Jnt_aleron_01_mmr
+    100008: Jnt_aleron_R_mml
+    100010: Jnt_aleron_R_mmr
+    100012: Jnt_Eye_end_mdr
+    100014: Jnt_Eye_end_mdr 1
+    100016: Jnt_Eye_end_mur
+    100018: Jnt_Eye_end_mur 1
+    100020: Jnt_Eye_mdl
+    100022: Jnt_Eye_mdr
+    100024: Jnt_Eye_mul
+    100026: Jnt_Eye_mur
+    100028: Jnt_Head_01_end_mmm
+    100030: Jnt_Head_01_mmm
+    100032: Jnt_Head_R_mmm
+    100034: Jnt_Jaw_end_mmm
+    100036: Jnt_Jaw_mmm
+    100038: Jnt_Pelvis_mmm
+    100040: Jnt_respiradero_01_mml
+    100042: Jnt_respiradero_01_mmr
+    100044: Jnt_respiradero_02_mml
+    100046: Jnt_respiradero_02_mmr
+    100048: Jnt_respiradero_03_mml
+    100050: Jnt_respiradero_03_mmr
+    100052: Jnt_respiradero_end_mmm
+    100054: Jnt_respiradero_end_mmr
+    100056: Jnt_respiradero_R_mmm
+    100058: Jnt_Tail_01_mml
+    100060: Jnt_Tail_01_mmm
+    100062: Jnt_Tail_01_mmr
+    100064: Jnt_Tail_02_end_mml
+    100066: Jnt_Tail_02_end_mmr
+    100068: Jnt_Tail_02_mml
+    100070: Jnt_Tail_02_mmm
+    100072: Jnt_Tail_02_mmr
+    100074: Jnt_Tail_03_end_mmm
+    100076: Jnt_Tail_03_mmm
+    100078: Jnt_Tail_R_mml
+    100080: Jnt_Tail_R_mmm
+    100082: Jnt_Tail_R_mmr
+    100084: Jnt_vertebra_01_mmm
+    100086: Jnt_vertebra_02_mmm
+    100088: Jnt_vertebra_03_mmm
+    100090: Jnt_vertebra_R_mmm
+    100092: //RootNode
+    400000: Jnt_aleron_01_end_mml
+    400002: Jnt_aleron_01_end_mmr
+    400004: Jnt_aleron_01_mml
+    400006: Jnt_aleron_01_mmr
+    400008: Jnt_aleron_R_mml
+    400010: Jnt_aleron_R_mmr
+    400012: Jnt_Eye_end_mdr
+    400014: Jnt_Eye_end_mdr 1
+    400016: Jnt_Eye_end_mur
+    400018: Jnt_Eye_end_mur 1
+    400020: Jnt_Eye_mdl
+    400022: Jnt_Eye_mdr
+    400024: Jnt_Eye_mul
+    400026: Jnt_Eye_mur
+    400028: Jnt_Head_01_end_mmm
+    400030: Jnt_Head_01_mmm
+    400032: Jnt_Head_R_mmm
+    400034: Jnt_Jaw_end_mmm
+    400036: Jnt_Jaw_mmm
+    400038: Jnt_Pelvis_mmm
+    400040: Jnt_respiradero_01_mml
+    400042: Jnt_respiradero_01_mmr
+    400044: Jnt_respiradero_02_mml
+    400046: Jnt_respiradero_02_mmr
+    400048: Jnt_respiradero_03_mml
+    400050: Jnt_respiradero_03_mmr
+    400052: Jnt_respiradero_end_mmm
+    400054: Jnt_respiradero_end_mmr
+    400056: Jnt_respiradero_R_mmm
+    400058: Jnt_Tail_01_mml
+    400060: Jnt_Tail_01_mmm
+    400062: Jnt_Tail_01_mmr
+    400064: Jnt_Tail_02_end_mml
+    400066: Jnt_Tail_02_end_mmr
+    400068: Jnt_Tail_02_mml
+    400070: Jnt_Tail_02_mmm
+    400072: Jnt_Tail_02_mmr
+    400074: Jnt_Tail_03_end_mmm
+    400076: Jnt_Tail_03_mmm
+    400078: Jnt_Tail_R_mml
+    400080: Jnt_Tail_R_mmm
+    400082: Jnt_Tail_R_mmr
+    400084: Jnt_vertebra_01_mmm
+    400086: Jnt_vertebra_02_mmm
+    400088: Jnt_vertebra_03_mmm
+    400090: Jnt_vertebra_R_mmm
+    400092: //RootNode
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
