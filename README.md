@@ -13,11 +13,16 @@ A.L.I.C.E是一款3D视角的休闲游戏，主角ALICE是一只鲸鱼，作为�
 ## 分工
 
 Game Design: Dapao、BoringFish、13
+
 Music&SFX: DaPao、13
+
 Program: BoringFish
+
 Art&Model: DaPao 
+
 PlayWright: 13
-Stage: Windows&MacOS
+
+## Stage: Windows&MacOS
 
 ## Demo Release Day：Before 2019/04/15
 
