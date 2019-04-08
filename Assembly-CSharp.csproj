@@ -60,14 +60,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\RealisticWaterCaustics\Script\FreeCamera.cs" />
+    <Compile Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\Script\FreeCamera.cs" />
     <Compile Include="Assets\Scripts\PlzSoonRemove.cs" />
-    <None Include="Assets\RealisticWaterCaustics\Shader\RealisticWaterCausticsBlend2.shader" />
-    <None Include="Assets\RealisticWaterCaustics\Shader\RealisticWaterCausticsBlend1.shader" />
-    <None Include="Assets\RealisticWaterCaustics\Shader\RealisticWaterCaustics.cginc" />
+    <None Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\Shader\RealisticWaterCausticsBlend2.shader" />
+    <None Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\Shader\RealisticWaterCausticsBlend1.shader" />
+    <None Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\Shader\RealisticWaterCaustics.cginc" />
     <None Include="Assets\ImportsFromTaobao\Underwater_FX\Documentation.txt" />
     <None Include="Assets\ImportsFromTaobao\Underwater_FX\Shaders\AlphaSelfIllum_NoFog.shader" />
-    <None Include="Assets\RealisticWaterCaustics\ReadMe.txt" />
+    <None Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\ReadMe.txt" />
+    <None Include="Assets\ImportsFromTaobao\CoralForest_SeaweedValley\Shader\Alpha_Texture.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/U3D/A.L.I.C.E/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
