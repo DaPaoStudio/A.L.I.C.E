@@ -123306,6 +123306,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: eb62f7c9629266b4dbba6d3b496fad38, type: 3}
+      propertyPath: m_UseLightProbes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: eb62f7c9629266b4dbba6d3b496fad38, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: eb62f7c9629266b4dbba6d3b496fad38, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -123344,14 +123352,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: eb62f7c9629266b4dbba6d3b496fad38, type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300004, guid: eb62f7c9629266b4dbba6d3b496fad38, type: 3}
-      propertyPath: m_UseLightProbes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300004, guid: eb62f7c9629266b4dbba6d3b496fad38, type: 3}
-      propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
