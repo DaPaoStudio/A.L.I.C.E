@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -322,13 +322,13 @@ MonoBehaviour:
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: A.L.I.C.E
 --- !u!222 &267995823
@@ -907,7 +907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1242, y: -172.7}
+  m_AnchoredPosition: {x: -1242, y: -148}
   m_SizeDelta: {x: 172.2, y: 344.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &720118058
@@ -1180,6 +1180,7 @@ GameObject:
   - component: {fileID: 953752746}
   - component: {fileID: 953752748}
   - component: {fileID: 953752747}
+  - component: {fileID: 953752749}
   m_Layer: 5
   m_Name: Press Any Key
   m_TagString: Untagged
@@ -1196,14 +1197,14 @@ RectTransform:
   m_GameObject: {fileID: 953752745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 2143093563}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -579}
+  m_AnchoredPosition: {x: 0, y: -407}
   m_SizeDelta: {x: 1185, y: 129.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953752747
@@ -1227,8 +1228,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
+<<<<<<< HEAD
     m_Font: {fileID: 12800000, guid: e084c0306d351b24e9124f6b3f27311e, type: 3}
     m_FontSize: 77
+=======
+    m_Font: {fileID: 12800000, guid: ea25fe560421fd3418bd1806eb340d31, type: 3}
+    m_FontSize: 200
+>>>>>>> 170622de035a265841af280d960a215a5a5bd74b
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1236,8 +1242,8 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Press Any Key to Adventure
 --- !u!222 &953752748
@@ -1248,6 +1254,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953752745}
   m_CullTransparentMesh: 0
+--- !u!225 &953752749
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953752745}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &971437007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,7 +1722,7 @@ GameObject:
   - component: {fileID: 1300496277}
   - component: {fileID: 1300496276}
   m_Layer: 5
-  m_Name: jellyfish
+  m_Name: jellyfish2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2305,7 +2323,7 @@ GameObject:
   - component: {fileID: 1921222892}
   - component: {fileID: 1921222891}
   m_Layer: 5
-  m_Name: jellyfish
+  m_Name: jellyfish1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2897,6 +2915,7 @@ GameObject:
   - component: {fileID: 2143093562}
   - component: {fileID: 2143093561}
   - component: {fileID: 2143093560}
+  - component: {fileID: 2143093564}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2987,3 +3006,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2143093564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143093559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30516e1cf7387f4f8f36eeec9647fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
