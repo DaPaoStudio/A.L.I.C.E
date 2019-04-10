@@ -74,6 +74,7 @@
     <None Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\Shader\RealisticWaterCaustics.cginc" />
     <None Include="Assets\ImportsFromTaobao\Underwater_FX\Documentation.txt" />
     <None Include="Assets\ImportsFromTaobao\Underwater_FX\Shaders\AlphaSelfIllum_NoFog.shader" />
+    <None Include="Assets\ImportsFromTaobao\Fish-Project\Shader\Alpha_Texture.shader" />
     <None Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\ReadMe.txt" />
     <None Include="Assets\ImportsFromTaobao\CoralForest_SeaweedValley\Shader\Alpha_Texture.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
