@@ -23,6 +23,7 @@ public class Camera : MonoBehaviour
     void rotate()
     {
         transform.RotateAround(player.transform.position, player.transform.up, Input.GetAxis("Mouse X") * rotationspeed);
+        transform.RotateAround(player.transform.position, transform.right, rotationspeed * Time.deltaTime);
         transform.LookAt(player.transform);
         offset = transform.position - player.transform.position;
     }

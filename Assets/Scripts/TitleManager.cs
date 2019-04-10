@@ -17,7 +17,7 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         canvas = GameObject.Find("Canvas");
-        jelly = canvas.transform.Find("Fish/jellyfish").gameObject;
+        jelly = canvas.transform.Find("jellyfish").gameObject;
         jellyfishup = jelly.transform.position.y + 100;
         jellyfishdown = jelly.transform.position.y - 60;
         presskey = canvas.transform.Find("Press Any Key").gameObject;
