@@ -22,6 +22,8 @@ Art&Model: DaPao
 
 PlayWright: 13
 
+CV: Meredith、OliverK
+
 ## Stage: Windows&MacOS
 
 ## Demo Release Day：Before 2019/04/15
