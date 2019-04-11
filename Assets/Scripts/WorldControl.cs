@@ -16,6 +16,12 @@ public class WorldControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.gameManager.HP <= 0)
+            die();
+    }
+
+    void die()
+    {
+
     }
 }

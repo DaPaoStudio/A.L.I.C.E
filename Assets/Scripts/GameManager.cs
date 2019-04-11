@@ -20,6 +20,16 @@ public class GameManager
     public int fishamount;
     public int trashamount;
     public int year;
+    public List<string> jiazhouwan = new List<string>(new string[]  { "alasijia", "jiazhouwaihai", "xiaweiyi"  });
+    public List<string> alasijia = new List<string>(new string[] { "jiazhouwaihai", "bailinghai" });
+    public List<string> jiazhouwaihai = new List<string>(new string[] { "alasijia", "xiaweiyi","beitaipingyang" });
+    public List<string> xiaweiyi = new List<string>(new string[] { "beitaipingyang", "jiazhouwaihai" });
+    public List<string> beitaipingyang = new List<string>(new string[] { "jiazhouwaihai", "bailinghai","xiaweiyi" });
+    public List<string> bailinghai = new List<string>(new string[] { "alasijia", "beitaipingyang" });
+    public List<string> isgone = new List<string>(new string[] { "jiazhouwan" });
+    public List<string> currentplacelist = new List<string>(new string[] { "alasijia", "jiazhouwaihai", "xiaweiyi" });
+    public string currentplace = "jiazhouwan";
+
 
     public void changehp(int hpchange)
     {
