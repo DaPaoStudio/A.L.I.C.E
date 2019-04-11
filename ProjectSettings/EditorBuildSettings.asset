@@ -9,6 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/0.Title.unity
     guid: e409e7d62fe9bf448a024fe843f67f77
   - enabled: 1
-    path: Assets/Scenes/1.World 0.unity
+    path: Assets/Scenes/1.California.unity
     guid: 61ad592d8b1cf9a4c9609f9467f9c759
+  - enabled: 1
+    path: Assets/Scenes/2.Map.unity
+    guid: 013ed89fe98decb47a82b7e06cc5666b
+  - enabled: 1
+    path: Assets/Scenes/3.Coast.unity
+    guid: a8074c2e804bf6040b34a9caa763af94
+  - enabled: 1
+    path: Assets/Scenes/4.Inside Sea.unity
+    guid: 701c3a9854ef93847918fb03890cfb6f
+  - enabled: 1
+    path: Assets/Scenes/5.Stranded End.unity
+    guid: 33482c74514a52f49af0b363a60c532b
+  - enabled: 1
+    path: Assets/Scenes/6.Whale Fall End.unity
+    guid: 6a196eb6821234f4899e38dcc97a1644
+  - enabled: 1
+    path: Assets/Scenes/UnderwaterTestScene.unity
+    guid: c96b66e76f5e096429b3cbf72b4f936f
   m_configObjects: {}
