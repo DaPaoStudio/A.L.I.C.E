@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class TitleManager : MonoBehaviour
     private float jellyfishup;
     private float jellyfishdown;
     private bool isup = true;
+    private GameObject[] bubbles;
+    private float bubblemovespeed;
+    private AudioSource AudioSource;
+    private GameObject black;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,11 @@ public class TitleManager : MonoBehaviour
         presskey = canvas.transform.Find("Press Any Key").gameObject;
         fadespeed = 2.0f;
         movespeed = 30.0f;
+        bubbles = GameObject.FindGameObjectsWithTag("bubble");
+        bubblemovespeed = 20f;
+        AudioSource = GetComponent<AudioSource>();
+        AudioSource.clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
+        black = canvas.transform.Find("black").gameObject;
     }
 
     // Update is called once per frame
@@ -30,6 +41,9 @@ public class TitleManager : MonoBehaviour
     {
         presskeymove();
         jellyfishmove();
+        bubblesmove();
+        if (Input.anyKeyDown)
+            StartCoroutine("startgame");
     }
 
     void jellyfishmove()
@@ -65,5 +79,25 @@ public class TitleManager : MonoBehaviour
             if (canvasGroup.alpha >= 0.9)
                 isfade = true;
         }
+    }
+    void bubblesmove()
+    {
+        foreach (var bubble in bubbles)
+        {
+            Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition3D;
+            pos.y += bubblemovespeed * Time.deltaTime;
+            if (pos.y >= 842)
+                pos.y = -600;
+            bubble.GetComponent<RectTransform>().anchoredPosition3D = pos;
+        }
+    }
+    IEnumerator startgame()
+    {
+        AudioSource.Play();
+        AsyncOperation op = null;
+        op = GameManager.gameManager.loadscene("1.World 0");
+        black.GetComponent<Image>().DOFade(1, 4.5f);
+        yield return new WaitForSeconds(5);
+        op.allowSceneActivation = true;
     }
 }

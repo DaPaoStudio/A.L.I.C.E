@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
     private AudioSource[] audioSources;
-    private float rotatespeed;
-    private float maxspeed;
-    private float movespeed;
+    private float rotatespeed = 20;
+    private float maxspeed=10;
+    private float movespeed = 1;
     private bool slowdown = true;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         audioSources = GetComponents<AudioSource>();
         audioSources[1].clip = GameManager.gameManager.getclip(@"SFX/" + "beats");
+        rigid.velocity = transform.forward * movespeed;
     }
 
     // Update is called once per frame
@@ -30,13 +31,16 @@ public class Player : MonoBehaviour
     void movecontrol()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.Rotate(Vector3.right, rotatespeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.S))
+        {
             transform.Rotate(Vector3.right, -rotatespeed * Time.deltaTime);
+            Debug.Log("a");
+        }
+        if (Input.GetKey(KeyCode.S))
+            transform.Rotate(Vector3.right, rotatespeed * Time.deltaTime);
         if (Input.GetKey(KeyCode.A))
-            transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.W))
             transform.Rotate(Vector3.up, -rotatespeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.D))
+            transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);
         if (Input.GetMouseButton(0))
         {
             rigid.velocity += transform.forward * 10 * Time.deltaTime;
@@ -45,8 +49,7 @@ public class Player : MonoBehaviour
         else
             slowdown = true;
         Vector3 angle = transform.eulerAngles;
-        angle.x = Mathf.Clamp(angle.x,-70, 70);
-        transform.eulerAngles = angle;
+        transform.eulerAngles = limitrotate(angle);
         float value = Mathf.Clamp(rigid.velocity.magnitude, 0, maxspeed);
         rigid.velocity = rigid.velocity * value / rigid.velocity.magnitude;
     }
@@ -63,6 +66,17 @@ public class Player : MonoBehaviour
             audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
             audioSources[0].Play();
         }
+    }
+
+    private Vector3 limitrotate(Vector3 angle)
+    {
+        angle.x -= 180;
+        if (angle.x > 0)
+            angle.x -= 180;
+        else
+            angle.x += 180;
+        angle.x= Mathf.Clamp(angle.x, -70, 70);
+        return angle;
     }
 
     private void OnCollisionEnter(Collision collision)

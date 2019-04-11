@@ -11,7 +11,7 @@ public class Camera : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("player");
-        rotationspeed = 2.0f;
+        rotationspeed = 100.0f;
         offset = transform.position - player.transform.position;
     }
 
@@ -19,12 +19,17 @@ public class Camera : MonoBehaviour
     void Update()
     {
         rotate();
+        transform.position = player.transform.position + offset;
     }
     void rotate()
     {
-        transform.RotateAround(player.transform.position, player.transform.up, Input.GetAxis("Mouse X") * rotationspeed);
-        transform.RotateAround(player.transform.position, transform.right, rotationspeed * Time.deltaTime);
+        //transform.RotateAround(player.transform.position, player.transform.up, Input.GetAxis("Mouse X") * rotationspeed);
+        //transform.RotateAround(player.transform.position, transform.right, rotationspeed * Time.deltaTime);
+        //transform.LookAt(player.transform);
+        //offset = (transform.position - player.transform.position) * offset.magnitude / (transform.position - player.transform.position).magnitude;
+        Quaternion quaternionx = Quaternion.AngleAxis( Input.GetAxis("Mouse X") * rotationspeed*Time.deltaTime, player.transform.up);
+        Quaternion quaterniony = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * rotationspeed*Time.deltaTime, transform.right);
+        offset = quaternionx * quaterniony * offset;
         transform.LookAt(player.transform);
-        offset = transform.position - player.transform.position;
     }
 }
