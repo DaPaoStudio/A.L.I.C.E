@@ -19,10 +19,12 @@ public class MapManager : MonoBehaviour
         Audio = GetComponent<AudioSource>();
         blackpanel = canvas.transform.Find("Black").gameObject;
         whale.transform.position = canvas.transform.Find(GameManager.gameManager.currentplace).position;
+        foreach (GameObject p in GameObject.FindGameObjectsWithTag("button"))
+            p.GetComponent<Button>().interactable = false;
         foreach (string p in GameManager.gameManager.currentplacelist)
-            canvas.transform.Find(p).GetComponent<Button>().enabled = true;
+            canvas.transform.Find(p).GetComponent<Button>().interactable = true;
         foreach (string p in GameManager.gameManager.isgone)
-            canvas.transform.Find(p).GetComponent<Button>().enabled = false;
+            canvas.transform.Find(p).GetComponent<Button>().interactable = false;
     }
 
     // Update is called once per frame

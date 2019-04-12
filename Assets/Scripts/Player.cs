@@ -91,6 +91,9 @@ public class Player : MonoBehaviour
             if (GameManager.gameManager.MP >= 80)
             {
                 op = GameManager.gameManager.loadscene("Map");
+                GameManager.gameManager.fishamount = (int)0.8 * GameManager.gameManager.fishamount;
+                GameManager.gameManager.trashamount = (int)1.5 * GameManager.gameManager.trashamount;
+                GameManager.gameManager.year += 5;
                 op.allowSceneActivation = true;
             }
         }
