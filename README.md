@@ -24,6 +24,8 @@ PlayWright: 13
 
 CV: Meredith、OliverK
 
+Instructor: WilsonZhu
+
 ## Stage: Windows&MacOS
 
 ## Demo Release Day：Before 2019/04/15
