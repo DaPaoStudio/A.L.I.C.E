@@ -21,6 +21,7 @@ public class TitleManager : MonoBehaviour
     private AudioSource AudioSource;
     private GameObject black;
     private GameObject dialog;
+    private bool isdo = false;
     private List<string> dialogs = new List<string>(new string[] {"孤独是永恒的","他像冰冷的深海海水","不论天空中是风和日丽还是狂风暴雨","如果你发出的声音谁也不能理解",
        "--那么","你，会觉得孤独吗?"});
     // Start is called before the first frame update
@@ -47,8 +48,11 @@ public class TitleManager : MonoBehaviour
         presskeymove();
         jellyfishmove();
         bubblesmove();
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && isdo == false)
+        {
             StartCoroutine("startgame");
+            isdo = true;
+        }
     }
 
     void jellyfishmove()

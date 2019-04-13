@@ -11,9 +11,11 @@ public class MapManager : MonoBehaviour
     private AudioSource Audio;
     private GameObject blackpanel;
     AsyncOperation op = null;
+    private bool isdo;
     // Start is called before the first frame update
     void Start()
     {
+        isdo = false;
         canvas = GameObject.Find("Canvas");
         whale = GameObject.Find("Alice");
         Audio = GetComponent<AudioSource>();
@@ -35,49 +37,68 @@ public class MapManager : MonoBehaviour
 
     public void xiaweiyi()
     {
-        Debug.Log("a");
-        GameManager.gameManager.currentplacelist = GameManager.gameManager.xiaweiyi;
-        GameManager.gameManager.isgone.Add("xiaweiyi");
-        GameManager.gameManager.currentplace = "夏威夷海";
-        op=GameManager.gameManager.loadscene("1.California");
-        Tweener tw= whale.transform.DOMove(canvas.transform.Find("xiaweiyi").position, 2);
-        tw.OnComplete(twcomplete);
+        if (isdo == false)
+        {
+            isdo = true;
+            GameManager.gameManager.currentplacelist = GameManager.gameManager.xiaweiyi;
+            GameManager.gameManager.isgone.Add("xiaweiyi");
+            GameManager.gameManager.currentplace = "夏威夷海";
+            op = GameManager.gameManager.loadscene("1.California");
+            Tweener tw = whale.transform.DOMove(canvas.transform.Find("xiaweiyi").position, 2);
+            tw.OnComplete(twcomplete);
+        }
     }
     public void beitaipingyang()
     {
-        GameManager.gameManager.currentplacelist = GameManager.gameManager.beitaipingyang;
-        GameManager.gameManager.isgone.Add("beitaipingyang");
-        GameManager.gameManager.currentplace = "北太平洋";
-        op = GameManager.gameManager.loadscene("4.Inside Sea");
-        Tweener tw = whale.transform.DOMove(canvas.transform.Find("beitaipingyang").position, 2);
-        tw.OnComplete(twcomplete);
+        if (isdo == false)
+        {
+            isdo = true;
+            GameManager.gameManager.currentplacelist = GameManager.gameManager.beitaipingyang;
+            GameManager.gameManager.isgone.Add("beitaipingyang");
+            GameManager.gameManager.currentplace = "北太平洋";
+            op = GameManager.gameManager.loadscene("4.Inside Sea");
+            Tweener tw = whale.transform.DOMove(canvas.transform.Find("beitaipingyang").position, 2);
+            tw.OnComplete(twcomplete);
+        }
     }
     public void bailinghai()
     {
-        GameManager.gameManager.currentplacelist = GameManager.gameManager.bailinghai;
-        GameManager.gameManager.isgone.Add("bailinghai");
-        GameManager.gameManager.currentplace = "白令海";
-        op = GameManager.gameManager.loadscene("4.Inside Sea");
-        Tweener tw = whale.transform.DOMove(canvas.transform.Find("bailinghai").position, 2);
-        tw.OnComplete(twcomplete);
+        if (isdo == false)
+        {
+            isdo = true;
+            GameManager.gameManager.currentplacelist = GameManager.gameManager.bailinghai;
+            GameManager.gameManager.isgone.Add("bailinghai");
+            GameManager.gameManager.currentplace = "白令海";
+            op = GameManager.gameManager.loadscene("4.Inside Sea");
+            Tweener tw = whale.transform.DOMove(canvas.transform.Find("bailinghai").position, 2);
+            tw.OnComplete(twcomplete);
+        }
     }
-        public void jiazhouwaihai()
+    public void jiazhouwaihai()
     {
-        GameManager.gameManager.currentplacelist = GameManager.gameManager.jiazhouwaihai;
-        GameManager.gameManager.isgone.Add("jiazhouwaihai");
-        GameManager.gameManager.currentplace = "加州外海";
-        op = GameManager.gameManager.loadscene("4.Inside Sea");
-        Tweener tw = whale.transform.DOMove(canvas.transform.Find("jiazhouwaihai").position, 2);
-        tw.OnComplete(twcomplete);
+        if (isdo == false)
+        {
+            isdo = true;
+            GameManager.gameManager.currentplacelist = GameManager.gameManager.jiazhouwaihai;
+            GameManager.gameManager.isgone.Add("jiazhouwaihai");
+            GameManager.gameManager.currentplace = "加州外海";
+            op = GameManager.gameManager.loadscene("4.Inside Sea");
+            Tweener tw = whale.transform.DOMove(canvas.transform.Find("jiazhouwaihai").position, 2);
+            tw.OnComplete(twcomplete);
+        }
     }
     public void alasijia()
     {
-        GameManager.gameManager.currentplacelist = GameManager.gameManager.alasijia;
-        GameManager.gameManager.isgone.Add("alasijia");
-        GameManager.gameManager.currentplace = "阿拉斯加湾";
-        op = GameManager.gameManager.loadscene("1.California");
-        Tweener tw = whale.transform.DOMove(canvas.transform.Find("alasijia").position, 2);
-        tw.OnComplete(twcomplete);
+        if (isdo == false)
+        {
+            isdo = true;
+            GameManager.gameManager.currentplacelist = GameManager.gameManager.alasijia;
+            GameManager.gameManager.isgone.Add("alasijia");
+            GameManager.gameManager.currentplace = "阿拉斯加湾";
+            op = GameManager.gameManager.loadscene("1.California");
+            Tweener tw = whale.transform.DOMove(canvas.transform.Find("alasijia").position, 2);
+            tw.OnComplete(twcomplete);
+        }
     }
     public void twcomplete()
     {

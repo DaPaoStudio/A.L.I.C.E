@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fd270336304472f42bae498892e8d293
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: WenYue GutiFangsong (Non-Commercial Use)
+  fontNames:
+  - WenYue GutiFangsong (Non-Commercial Use)
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e084c0306d351b24e9124f6b3f27311e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

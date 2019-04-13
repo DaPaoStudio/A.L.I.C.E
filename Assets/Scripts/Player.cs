@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
     private AudioSource[] audioSources;
-    private float rotatespeed =80;
+    private float rotatespeed =160;
     private float maxspeed=10;
     private float movespeed = 1;
     private bool slowdown = true;
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         audioplay();
         if (slowdown)
             rigid.velocity = Vector3.Lerp(rigid.velocity, transform.forward * movespeed, 0.8f);
+        lineplay();
     }
 
     void movecontrol()
@@ -66,6 +67,20 @@ public class Player : MonoBehaviour
             int index = (int)Random.Range(0, 5f);
             audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
             audioSources[0].Play();
+            if (GameManager.gameManager.currentplace == "加州湾" && GameManager.gameManager.firstsonginjiazhou == false)
+            {
+                AudioClip clip = GameManager.gameManager.getline("进入加州湾第一次唱响鲸歌");
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+                GameManager.gameManager.firstsonginjiazhou = true;
+            }
+            if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.firstsonginjiazhou == true && GameManager.gameManager.secondsong == false)
+            {
+                AudioClip clip = GameManager.gameManager.getline("在除加州湾以外的地区触发鲸歌并且在加州湾触发过");
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+                GameManager.gameManager.secondsong = true;
+            }
         }
     }
 
@@ -77,6 +92,7 @@ public class Player : MonoBehaviour
         else
             angle.x += 180;
         angle.x= Mathf.Clamp(angle.x, -70, 70);
+        angle.z = 0;
         return angle;
     }
 
@@ -91,6 +107,13 @@ public class Player : MonoBehaviour
         {
             GameManager.gameManager.changehp((int)Random.Range(-5, -1));
             collision.gameObject.SetActive(false);
+            if(GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.firsteattrash==false)
+            {
+                AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次吃到垃圾");
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+                GameManager.gameManager.firsteattrash = true;
+            }
         }
         else if (collision.transform.tag == "walll")
         {
@@ -104,7 +127,10 @@ public class Player : MonoBehaviour
                 if(GameManager.gameManager.currentplace=="加州湾"&& GameManager.gameManager.dialogoneplayed==false)
                 {
                     GameObject.Find("Canvas").SendMessage("showdialogone", op);
-                    GameManager.gameManager.dialogoneplayed = false;
+                    GameManager.gameManager.dialogoneplayed = true;
+                    AudioClip clip = GameManager.gameManager.getline("离开加州湾");
+                    audioSources[2].clip = clip;
+                    audioSources[2].Play();
                 }
                 else
                     GameObject.Find("Canvas").SendMessage("becomeblack",op);
@@ -113,6 +139,45 @@ public class Player : MonoBehaviour
             {
                 GameObject.Find("Canvas").SendMessage("tip");
             }
+        }
+    }
+
+    void lineplay()
+    {
+        if(GameManager.gameManager.currentplace!="加州湾"&&rigid.velocity.magnitude==maxspeed&&GameManager.gameManager.firstacc==false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次加速到上限");
+            audioSources[2].clip = clip;
+            audioSources[2].Play();
+            GameManager.gameManager.firstacc = true;
+        }
+        if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.HP<=50 && GameManager.gameManager.firstreducehp == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次受到生命值伤害");
+            audioSources[2].clip = clip;
+            audioSources[2].Play();
+            GameManager.gameManager.firstreducehp = true;
+        }
+        if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.HP <= 50 && GameManager.gameManager.firstreducehp == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次受到生命值伤害");
+            audioSources[2].clip = clip;
+            audioSources[2].Play();
+            GameManager.gameManager.firstreducehp = true;
+        }
+        if (GameManager.gameManager.MP >= 50 && GameManager.gameManager.over50 == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("能量超过50");
+            audioSources[2].clip = clip;
+            audioSources[2].Play();
+            GameManager.gameManager.over50 = true;
+        }
+        if (GameManager.gameManager.MP >= 30 && GameManager.gameManager.over30 == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("能量超过30");
+            audioSources[2].clip = clip;
+            audioSources[2].Play();
+            GameManager.gameManager.over30 = true;
         }
     }
 }

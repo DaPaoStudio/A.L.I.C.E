@@ -43,7 +43,10 @@ public class WorldControl : MonoBehaviour
 
     void die()
     {
-
+        if (GameManager.gameManager.currentplace == "阿拉斯加湾" || GameManager.gameManager.currentplace == "夏威夷海" || GameManager.gameManager.currentplace == "加州湾")
+            GameManager.gameManager.loadscene("5.Stranded End");
+        else
+            GameManager.gameManager.loadscene("6.Whale Fall End");
     }
     void showHPandEN()
     {
@@ -113,10 +116,10 @@ public class WorldControl : MonoBehaviour
         foreach (string p in GameManager.gameManager.dialogone)
         {
             dialog.GetComponent<Text>().text = p;
-            dialog.GetComponent<Text>().DOFade(1, 3f);
-            yield return new WaitForSeconds(4f);
-            dialog.GetComponent<Text>().DOFade(0, 3f);
-            yield return new WaitForSeconds(4f);
+            dialog.GetComponent<Text>().DOFade(1, 2f);
+            yield return new WaitForSeconds(3f);
+            dialog.GetComponent<Text>().DOFade(0, 2f);
+            yield return new WaitForSeconds(3f);
         }
         op.allowSceneActivation = true;
     }
