@@ -37,6 +37,7 @@ public class GameManager
     public bool firsteattrash = false;
     public bool firstsonginjiazhou = false;
     public bool secondsong = false;
+    public List<string> we = new List<string>(new string[] { "文案：十三\n策划，美术：DaPao\n程序：BoringFish", "Thank You For Play" });
 
 
     public void changehp(int hpchange)

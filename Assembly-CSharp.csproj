@@ -69,6 +69,8 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\ImportsFromTaobao\RealisticWaterCaustics\Script\FreeCamera.cs" />
     <Compile Include="Assets\Scripts\Camera.cs" />
+    <Compile Include="Assets\Scripts\EndOne.cs" />
+    <Compile Include="Assets\Scripts\EndTwo.cs" />
     <Compile Include="Assets\Scripts\FishAI.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MapManager.cs" />
