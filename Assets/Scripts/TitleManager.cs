@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
@@ -19,9 +20,13 @@ public class TitleManager : MonoBehaviour
     private float bubblemovespeed;
     private AudioSource AudioSource;
     private GameObject black;
+    private GameObject dialog;
+    private List<string> dialogs = new List<string>(new string[] {"孤独是永恒的","他像冰冷的深海海水","不论天空中是风和日丽还是狂风暴雨","如果你发出的声音谁也不能理解",
+       "--那么","你，会觉得孤独吗?"});
     // Start is called before the first frame update
     void Start()
     {
+        dialog =transform.Find("dialog").gameObject;
         canvas = GameObject.Find("Canvas");
         jelly = canvas.transform.Find("jellyfish").gameObject;
         jellyfishup = jelly.transform.position.y + 100;
@@ -93,11 +98,23 @@ public class TitleManager : MonoBehaviour
     }
     IEnumerator startgame()
     {
+        GameObject.Find("Main Camera").GetComponent<AudioSource>().enabled = false;
         AudioSource.Play();
         AsyncOperation op = null;
-        op = GameManager.gameManager.loadscene("1.World 0");
+        op = GameManager.gameManager.loadscene("1.California");
         black.GetComponent<Image>().DOFade(1, 4.5f);
         yield return new WaitForSeconds(5);
+        StartCoroutine("showdialog", op);
+    }
+    IEnumerator showdialog(AsyncOperation op)
+    {
+        foreach(string p in dialogs)
+        {
+            dialog.GetComponent<Text>().text = p;
+            Tweener tw = dialog.GetComponent<Text>().DOFade(1, 2f);
+            tw.OnComplete(delegate { dialog.GetComponent<Text>().DOFade(0, 2f); });
+            yield return new WaitForSeconds(4.5f);
+        }
         op.allowSceneActivation = true;
     }
 }

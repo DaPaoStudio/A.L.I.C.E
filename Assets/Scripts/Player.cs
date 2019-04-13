@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
     private AudioSource[] audioSources;
-    private float rotatespeed = 20;
+    private float rotatespeed =80;
     private float maxspeed=10;
     private float movespeed = 1;
     private bool slowdown = true;
@@ -33,14 +34,14 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             transform.Rotate(Vector3.right, -rotatespeed * Time.deltaTime);
-            Debug.Log("a");
         }
         if (Input.GetKey(KeyCode.S))
             transform.Rotate(Vector3.right, rotatespeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.A))
-            transform.Rotate(Vector3.up, -rotatespeed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.D))
-            transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);
+       /*  if (Input.GetKey(KeyCode.A))
+             transform.Rotate(Vector3.up, -rotatespeed * Time.deltaTime);
+         if (Input.GetKey(KeyCode.D))
+             transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);*/
+        transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotatespeed * Time.deltaTime);
         if (Input.GetMouseButton(0))
         {
             rigid.velocity += transform.forward * 10 * Time.deltaTime;
@@ -82,19 +83,35 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "fish")
+        {
             GameManager.gameManager.changemp(1);
+            collision.gameObject.SetActive(false);
+        }
         else if (collision.transform.tag == "trash")
+        {
             GameManager.gameManager.changehp((int)Random.Range(-5, -1));
-        else if(collision.transform.tag == "wall")
+            collision.gameObject.SetActive(false);
+        }
+        else if (collision.transform.tag == "walll")
         {
             AsyncOperation op = null;
             if (GameManager.gameManager.MP >= 80)
             {
-                op = GameManager.gameManager.loadscene("Map");
+                op = GameManager.gameManager.loadscene("2.Map");
                 GameManager.gameManager.fishamount = (int)0.8 * GameManager.gameManager.fishamount;
                 GameManager.gameManager.trashamount = (int)1.5 * GameManager.gameManager.trashamount;
                 GameManager.gameManager.year += 5;
-                op.allowSceneActivation = true;
+                if(GameManager.gameManager.currentplace=="加州湾"&& GameManager.gameManager.dialogoneplayed==false)
+                {
+                    GameObject.Find("Canvas").SendMessage("showdialogone", op);
+                    GameManager.gameManager.dialogoneplayed = false;
+                }
+                else
+                    GameObject.Find("Canvas").SendMessage("becomeblack",op);
+            }
+            else
+            {
+                GameObject.Find("Canvas").SendMessage("tip");
             }
         }
     }

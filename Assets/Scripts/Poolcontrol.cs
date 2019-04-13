@@ -21,7 +21,7 @@ public class Poolcontrol : MonoBehaviour
     {
         if(!pools.ContainsKey(prefabname))
         {
-            GameObject prefab = Resources.Load(prefabname) as GameObject;
+            GameObject prefab = Resources.Load(@"Model/"+prefabname) as GameObject;
             Pool newpool = new Pool(prefab);
             pools.Add(prefab.name, newpool);
         }

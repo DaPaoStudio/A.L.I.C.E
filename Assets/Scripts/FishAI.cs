@@ -10,7 +10,7 @@ public class FishAI : MonoBehaviour
     private float movespeed = 10f;
     private Vector3 nowforword;
     private float rotatespeed = 5;
-    private float raydistance = 1;
+    private float raydistance = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +50,19 @@ public class FishAI : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position,transform.forward,out hit,raydistance))
         {
-            float anglevalue = Vector3.Angle(hit.transform.up, transform.forward);
-            nowforword = Quaternion.AngleAxis(180 - 2 * anglevalue, transform.right) * transform.forward;
+            if (hit.transform.tag == "walld")
+            {
+                float anglevalue = Vector3.Angle(hit.transform.up, transform.forward);
+                nowforword = Quaternion.AngleAxis(180 - 2 * anglevalue, transform.right) * transform.forward;
+            }
+            if (hit.transform.tag == "walll")
+            {
+                float anglevalue = Vector3.Angle(hit.transform.right, transform.forward);
+                if(anglevalue>=90)
+                    nowforword = Quaternion.AngleAxis(2 * anglevalue-360, transform.up) * transform.forward;
+                else
+                    nowforword = Quaternion.AngleAxis( 2 * anglevalue, transform.up) * transform.forward;
+            }
         }
     }
     private Vector3 limitrotate(Vector3 angle)

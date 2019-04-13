@@ -6,6 +6,10 @@ TagManager:
   tags:
   - bubble
   - button
+  - trash
+  - fish
+  - walll
+  - walld
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,7 @@ public class MapManager : MonoBehaviour
         whale = GameObject.Find("Alice");
         Audio = GetComponent<AudioSource>();
         blackpanel = canvas.transform.Find("Black").gameObject;
-        whale.transform.position = canvas.transform.Find(GameManager.gameManager.currentplace).position;
+        whale.transform.position = canvas.transform.Find(GameManager.gameManager.switchword(GameManager.gameManager.currentplace)).position;
         foreach (GameObject p in GameObject.FindGameObjectsWithTag("button"))
             p.GetComponent<Button>().interactable = false;
         foreach (string p in GameManager.gameManager.currentplacelist)
@@ -38,8 +38,8 @@ public class MapManager : MonoBehaviour
         Debug.Log("a");
         GameManager.gameManager.currentplacelist = GameManager.gameManager.xiaweiyi;
         GameManager.gameManager.isgone.Add("xiaweiyi");
-        GameManager.gameManager.currentplace = "xiaweiyi";
-        op=GameManager.gameManager.loadscene("3.Coast");
+        GameManager.gameManager.currentplace = "夏威夷海";
+        op=GameManager.gameManager.loadscene("1.California");
         Tweener tw= whale.transform.DOMove(canvas.transform.Find("xiaweiyi").position, 2);
         tw.OnComplete(twcomplete);
     }
@@ -47,8 +47,8 @@ public class MapManager : MonoBehaviour
     {
         GameManager.gameManager.currentplacelist = GameManager.gameManager.beitaipingyang;
         GameManager.gameManager.isgone.Add("beitaipingyang");
-        GameManager.gameManager.currentplace = "beitaipingyang";
-        op = GameManager.gameManager.loadscene("3.Coast");
+        GameManager.gameManager.currentplace = "北太平洋";
+        op = GameManager.gameManager.loadscene("4.Inside Sea");
         Tweener tw = whale.transform.DOMove(canvas.transform.Find("beitaipingyang").position, 2);
         tw.OnComplete(twcomplete);
     }
@@ -56,8 +56,8 @@ public class MapManager : MonoBehaviour
     {
         GameManager.gameManager.currentplacelist = GameManager.gameManager.bailinghai;
         GameManager.gameManager.isgone.Add("bailinghai");
-        GameManager.gameManager.currentplace = "bailinghai";
-        op = GameManager.gameManager.loadscene("3.Coast");
+        GameManager.gameManager.currentplace = "白令海";
+        op = GameManager.gameManager.loadscene("4.Inside Sea");
         Tweener tw = whale.transform.DOMove(canvas.transform.Find("bailinghai").position, 2);
         tw.OnComplete(twcomplete);
     }
@@ -65,8 +65,8 @@ public class MapManager : MonoBehaviour
     {
         GameManager.gameManager.currentplacelist = GameManager.gameManager.jiazhouwaihai;
         GameManager.gameManager.isgone.Add("jiazhouwaihai");
-        GameManager.gameManager.currentplace = "jiazhouwaihai";
-        op = GameManager.gameManager.loadscene("3.Coast");
+        GameManager.gameManager.currentplace = "加州外海";
+        op = GameManager.gameManager.loadscene("4.Inside Sea");
         Tweener tw = whale.transform.DOMove(canvas.transform.Find("jiazhouwaihai").position, 2);
         tw.OnComplete(twcomplete);
     }
@@ -74,8 +74,8 @@ public class MapManager : MonoBehaviour
     {
         GameManager.gameManager.currentplacelist = GameManager.gameManager.alasijia;
         GameManager.gameManager.isgone.Add("alasijia");
-        GameManager.gameManager.currentplace = "alasijia";
-        op = GameManager.gameManager.loadscene("3.Coast");
+        GameManager.gameManager.currentplace = "阿拉斯加湾";
+        op = GameManager.gameManager.loadscene("1.California");
         Tweener tw = whale.transform.DOMove(canvas.transform.Find("alasijia").position, 2);
         tw.OnComplete(twcomplete);
     }

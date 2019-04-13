@@ -28,12 +28,12 @@ public class Pool
             {
                 go = obj;
                 break;
-            }
-            if(go==null)
-            {
-                go = GameObject.Instantiate(thisprefab);
-                prefabs.Add(go);
-            }
+            }          
+        }
+        if (go == null)
+        {
+            go = GameObject.Instantiate(thisprefab);
+            prefabs.Add(go);
         }
         go.SetActive(true);
         return go;
