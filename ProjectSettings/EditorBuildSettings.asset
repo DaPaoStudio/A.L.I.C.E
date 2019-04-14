@@ -6,17 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Title_Old.unity
-    guid: e409e7d62fe9bf448a024fe843f67f77
+    path: Assets/Scenes/0.Title.unity
+    guid: 7caf4bb7beb0ed6489a0af33be579f07
   - enabled: 1
     path: Assets/Scenes/1.California.unity
     guid: 690528951f8067d4090b26fdaa16f336
   - enabled: 1
     path: Assets/Scenes/2.Map.unity
     guid: 013ed89fe98decb47a82b7e06cc5666b
-  - enabled: 0
-    path: Assets/Scenes/3.Coast.unity
-    guid: 496edb5cf1c820a489715a66702f4a7d
   - enabled: 1
     path: Assets/Scenes/4.Inside Sea.unity
     guid: bbe6ea98e2c11f44caad0ecc8db826e5
@@ -27,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/6.Whale Fall End.unity
     guid: 6a196eb6821234f4899e38dcc97a1644
   - enabled: 0
+    path: Assets/Scenes/3.Coast.unity
+    guid: 496edb5cf1c820a489715a66702f4a7d
+  - enabled: 0
     path: Assets/Scenes/UnderwaterTestScene.unity
     guid: c96b66e76f5e096429b3cbf72b4f936f
+  - enabled: 0
+    path: Assets/Scenes/Title_Old.unity
+    guid: e409e7d62fe9bf448a024fe843f67f77
   m_configObjects: {}
