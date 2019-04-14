@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
     private AudioSource[] audioSources;
-    private float rotatespeed =100;
+    private float rotatespeed =200;
     private float maxspeed=10;
     private float movespeed = 1;
     private bool slowdown = true;
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     void movecontrol()
     {
-        if (Input.GetKey(KeyCode.W))
+   /*     if (Input.GetKey(KeyCode.W))
         {
             transform.Rotate(Vector3.right, -rotatespeed * Time.deltaTime);
         }
@@ -54,8 +54,9 @@ public class Player : MonoBehaviour
          if (Input.GetKey(KeyCode.A))
              transform.Rotate(Vector3.up, -rotatespeed * Time.deltaTime);
          if (Input.GetKey(KeyCode.D))
-             transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);
-        //transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotatespeed * Time.deltaTime);
+             transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);*/
+        transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotatespeed * Time.deltaTime);
+        transform.Rotate(Vector3.right, Input.GetAxis("Mouse Y") * rotatespeed * Time.deltaTime);
         if (Input.GetMouseButton(0))
         {
             rigid.velocity += transform.forward * 10 * Time.deltaTime;
@@ -77,7 +78,7 @@ public class Player : MonoBehaviour
             audioSources[1].Stop();
         if (Input.GetMouseButtonDown(1))
         {
-            int index = (int)Random.Range(0, 5f);
+            int index = (int)Random.Range(1, 5f);
             audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
             audioSources[0].Play();
             if (GameManager.gameManager.currentplace == "加州湾" && GameManager.gameManager.firstsonginjiazhou == false)
