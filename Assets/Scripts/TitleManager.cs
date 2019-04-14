@@ -22,7 +22,7 @@ public class TitleManager : MonoBehaviour
     //private GameObject[] fishes;
     //private GameObject[] jellyfishes;
     //private float bubblemovespeed;
-    private AudioSource AudioSource;
+    private AudioSource[] AudioSources;
     private GameObject black;
     private GameObject dialog;
     private bool isdo = false;
@@ -44,8 +44,9 @@ public class TitleManager : MonoBehaviour
         //bubbles = GameObject.FindGameObjectsWithTag("bubble");
         //fishes = GameObject.FindGameObjectsWithTag("fish");
         //bubblemovespeed = 40f;
-        AudioSource = GetComponent<AudioSource>();
-        AudioSource.clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
+        AudioSources = GetComponents<AudioSource>();
+        AudioSources[0].clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
+        AudioSources[1].clip = Resources.Load(@"Audios/BGM/地图界面背景音") as AudioClip;
         black = canvas.transform.Find("black").gameObject;
     }
 
@@ -56,7 +57,7 @@ public class TitleManager : MonoBehaviour
         //jellyfishmove();
         //bubblesmove();
         //fishesmove();
-        if (Input.anyKeyDown && isdo == false)
+        if (Input.GetKeyDown(KeyCode.Space) && isdo == false)
         {
             GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
             StartCoroutine("startgame");
@@ -130,8 +131,8 @@ public class TitleManager : MonoBehaviour
     //}
     IEnumerator startgame()
     {
-        //GameObject.Find("Main Camera").GetComponent<AudioSource>().enabled = false;
-        AudioSource.Play();
+        GameObject.Find("Main Camera").GetComponent<AudioSource>().enabled = false;
+        AudioSources[1].Play();
         AsyncOperation op = null;
         op = GameManager.gameManager.loadscene("1.California");
         black.GetComponent<Image>().DOFade(1, 4.5f);
@@ -147,6 +148,8 @@ public class TitleManager : MonoBehaviour
             tw.OnComplete(delegate { dialog.GetComponent<Text>().DOFade(0, 2f); });
             yield return new WaitForSeconds(4.5f);
         }
+        AudioSources[0].Play();
+        yield return new WaitForSeconds(5f);
         op.allowSceneActivation = true;
     }
 }

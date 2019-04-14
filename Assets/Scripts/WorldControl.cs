@@ -21,6 +21,7 @@ public class WorldControl : MonoBehaviour
     private bool low;
     public bool stoplow;
     private GameObject intro;
+    private bool deathplay = false;
   
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class WorldControl : MonoBehaviour
         stoplow = false;
         low = false;
         cando = false;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = Resources.Load(@"Audios/SFX/WhaleDeath") as AudioClip;
         canvas = GameObject.Find("Canvas");
         dialog = transform.Find("dialog").gameObject;
         HP = canvas.transform.Find("HP").gameObject;
@@ -50,8 +53,11 @@ public class WorldControl : MonoBehaviour
     void Update()
     {
         showHPandEN();
-        if (GameManager.gameManager.HP <= 0)
-            die();
+        if (GameManager.gameManager.HP <= 0 && deathplay == false)
+        {
+            StartCoroutine("die");
+            deathplay = true;
+        }
         if (GameManager.gameManager.HP <= 10&&low==false)
         {
             StartCoroutine("hplow");
@@ -59,12 +65,16 @@ public class WorldControl : MonoBehaviour
         }
     }
 
-    void die()
+    IEnumerator die()
     {
+        audioSource.Play();
+        AsyncOperation op = null;
         if (GameManager.gameManager.currentplace == "阿拉斯加湾" || GameManager.gameManager.currentplace == "夏威夷海" || GameManager.gameManager.currentplace == "加州湾")
-            GameManager.gameManager.loadscene("5.Stranded End").allowSceneActivation=true;
+            op = GameManager.gameManager.loadscene("5.Stranded End");
         else
-            GameManager.gameManager.loadscene("6.Whale Fall End").allowSceneActivation=true;
+            op = GameManager.gameManager.loadscene("6.Whale Fall End");
+        yield return new WaitForSeconds(4);
+        op.allowSceneActivation = true;
     }
     void showHPandEN()
     {
