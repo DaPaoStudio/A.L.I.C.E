@@ -102,7 +102,7 @@ public class MapManager : MonoBehaviour
     }
     public void twcomplete()
     {
-        int index = (int)Random.Range(0, 5f);
+        int index = (int)Random.Range(1, 5f);
         Audio.clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
         Audio.Play();
         Tweener twr=blackpanel.GetComponent<Image>().DOFade(1, 8f);
