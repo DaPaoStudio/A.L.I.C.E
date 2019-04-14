@@ -22,7 +22,7 @@ public class GameManager
     public bool waitthird = false;
     public int HP = 100;
     public int maxHP = 100;
-    public int MP = 80;
+    public int MP = 20;
     public int maxMP = 100;
     public int fishamount = 300;
     public int trashamount = 200;
