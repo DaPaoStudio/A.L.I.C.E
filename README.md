@@ -1,8 +1,8 @@
-# [开发中] A.L.I.C.E
+# [基本完成] A.L.I.C.E
 
 ## 关于A.L.I.C.E
 
-A.L.I.C.E是一款3D视角的休闲游戏，主角ALICE是一只鲸鱼，作为全世界最孤独的鲸鱼，她渴望摆脱孤独。玩家需要操纵鲸鱼，在一个个有限大小的海洋世界中吞食小鱼，避开随着时间越来越多的垃圾，让自己积蓄一定的能量后踏上前往下一片海域的征途，直到找到鲸鱼群，摆脱孤独。
+A.L.I.C.E是一款3D视角的休闲游戏，游戏讲述了Alice——一条52Hz的鲸鱼的故事，作为全世界最孤独的鲸鱼，她渴望摆脱孤独。在游戏中玩家将化身为Alice，探索一个个风格迥异的海洋世界，避开随着时间越来越多的垃圾，让自己积蓄一定的能量后踏上前往下一片海域的远行，一路北上，从加州沿海到阿拉斯加，从北太平洋到白令海峡，直到找到另外一头相似的鲸，摆脱那该死的孤独
 
 ## 关于Alice：
 
@@ -12,21 +12,21 @@ A.L.I.C.E是一款3D视角的休闲游戏，主角ALICE是一只鲸鱼，作为�
 
 ## 分工
 
-Game Design: Dapao、BoringFish、13
+Game Design: Dapao、BoringFish、Thirteen
 
-Music&SFX: DaPao、13
+Music&SFX: DaPao、Thirteen
 
 Program: BoringFish
 
 Art&Model: DaPao 
 
-PlayWright: 13
+PlayWright: Thirteen
 
-CV: Meredith、OliverK
+CV: Meredith、OliverK、Thirteen
 
 Instructor: WilsonZhu
 
-## Stage: Windows&MacOS
+## Stage: Windows
 
 ## Demo Release Day：Before 2019/04/15
 
