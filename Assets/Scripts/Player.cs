@@ -17,9 +17,11 @@ public class Player : MonoBehaviour
     private bool canplayclip;
     private bool beat;
     private bool particalplay = false;
+    private bool hasgone;
     // Start is called before the first frame update
     void Start()
     {
+        hasgone = false;
         if(GameManager.gameManager.currentplace!="加州湾")
             GameManager.gameManager.MP -= 60;
         beat = false;
@@ -105,9 +107,12 @@ public class Player : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            int index = (int)Random.Range(1, 5f);
-            audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
-            audioSources[0].Play();
+            if (audioSources[0].isPlaying==false)
+            {
+                int index = (int)Random.Range(1, 5f);
+                audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
+                audioSources[0].Play();
+            }
             if (GameManager.gameManager.currentplace == "加州湾" && GameManager.gameManager.firstsonginjiazhou == false)
             {
                 StartCoroutine("jinggeline", "进入加州湾第一次唱响鲸歌");
@@ -172,13 +177,14 @@ public class Player : MonoBehaviour
         else if (collision.transform.tag == "walll")
         {
             AsyncOperation op = null;
-            if (GameManager.gameManager.MP >= 80)
+            if (GameManager.gameManager.MP >= 80&&hasgone==false)
             {
                 op = GameManager.gameManager.loadscene("2.Map");
                 GameObject.Find("Canvas").SendMessage("tiptwo", false);
                 GameManager.gameManager.fishamount = (int)(0.7 * GameManager.gameManager.fishamount);
                 GameManager.gameManager.trashamount = (int)(1.3 * GameManager.gameManager.trashamount);
-                GameManager.gameManager.year += 5;               
+                GameManager.gameManager.year += 5;
+                hasgone = true;
                 if(GameManager.gameManager.currentplace=="加州湾"&& GameManager.gameManager.dialogoneplayed==false)
                 {
                     audioSources[1].Stop();
