@@ -7,7 +7,7 @@ public class FishAI : MonoBehaviour
     private Rigidbody Rigidbody;
     private float rotatetime;
     private float timer = 0;
-    private float movespeed = 10f;
+    private float movespeed = 30f;
     private Vector3 nowforword;
     private float rotatespeed = 5;
     private float raydistance = 4;

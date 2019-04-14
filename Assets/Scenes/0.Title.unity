@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 322718113}
   m_Layer: 5
   m_Name: Fish
-  m_TagString: Untagged
+  m_TagString: fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 801588852}
   m_Layer: 5
   m_Name: 'Fish '
-  m_TagString: Untagged
+  m_TagString: fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2212,7 +2212,7 @@ GameObject:
   - component: {fileID: 1607331627}
   m_Layer: 5
   m_Name: Fish
-  m_TagString: Untagged
+  m_TagString: fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2620,7 +2620,7 @@ GameObject:
   - component: {fileID: 1756948853}
   m_Layer: 5
   m_Name: fish
-  m_TagString: Untagged
+  m_TagString: fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

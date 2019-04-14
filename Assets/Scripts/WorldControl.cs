@@ -44,9 +44,9 @@ public class WorldControl : MonoBehaviour
     void die()
     {
         if (GameManager.gameManager.currentplace == "阿拉斯加湾" || GameManager.gameManager.currentplace == "夏威夷海" || GameManager.gameManager.currentplace == "加州湾")
-            GameManager.gameManager.loadscene("5.Stranded End");
+            GameManager.gameManager.loadscene("5.Stranded End").allowSceneActivation=true;
         else
-            GameManager.gameManager.loadscene("6.Whale Fall End");
+            GameManager.gameManager.loadscene("6.Whale Fall End").allowSceneActivation=true;
     }
     void showHPandEN()
     {
@@ -89,15 +89,25 @@ public class WorldControl : MonoBehaviour
         {
             int index = Random.Range(1, 30);
             GameObject fish = Poolcontrol.MyPool.getobj("trash" + index.ToString());
-            float positionx = Random.Range(-3f, 97f);
-            float positiony = Random.Range(28f, 108f);
-            float positionz = Random.Range(-37f, 63f);
-            fish.transform.position = new Vector3(positionx, positiony, positionz);
+            if (SceneManager.GetActiveScene().name == "1.California")
+            {
+                float positionx = Random.Range(-3f, 97f);
+                float positiony = Random.Range(20f, 78f);
+                float positionz = Random.Range(-37f, 63f);
+                fish.transform.position = new Vector3(positionx, positiony, positionz);
+            }
+            if (SceneManager.GetActiveScene().name == "4.Inside Sea")
+            {
+                float positionx = Random.Range(-132f, 128f);
+                float positiony = Random.Range(-180f, 220f);
+                float positionz = Random.Range(-125f, 135f);
+                fish.transform.position = new Vector3(positionx, positiony, positionz);
+            }
         }
     }
-    public void tip()
+    public void tip(string p)
     {
-        showplace.GetComponent<Text>().text = "能量不足";
+        showplace.GetComponent<Text>().text = p;
         Tweener tw= showplace.GetComponent<Text>().DOFade(1, 2f);
         tw.OnComplete(delegate { showplace.GetComponent<Text>().DOFade(0, 2f); });
     }

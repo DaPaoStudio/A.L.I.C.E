@@ -17,6 +17,7 @@ public class TitleManager : MonoBehaviour
     private float jellyfishdown;
     private bool isup = true;
     private GameObject[] bubbles;
+    private GameObject[] fishes;
     private float bubblemovespeed;
     private AudioSource AudioSource;
     private GameObject black;
@@ -36,6 +37,7 @@ public class TitleManager : MonoBehaviour
         fadespeed = 2.0f;
         movespeed = 30.0f;
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
+        fishes = GameObject.FindGameObjectsWithTag("fish");
         bubblemovespeed = 20f;
         AudioSource = GetComponent<AudioSource>();
         AudioSource.clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
@@ -48,6 +50,7 @@ public class TitleManager : MonoBehaviour
         presskeymove();
         jellyfishmove();
         bubblesmove();
+        fishesmove();
         if (Input.anyKeyDown && isdo == false)
         {
             StartCoroutine("startgame");
@@ -98,6 +101,17 @@ public class TitleManager : MonoBehaviour
             if (pos.y >= 842)
                 pos.y = -600;
             bubble.GetComponent<RectTransform>().anchoredPosition3D = pos;
+        }
+    }
+    void fishesmove()
+    {
+        foreach (var fish in fishes)
+        {
+            Vector3 pos = fish.GetComponent<RectTransform>().anchoredPosition3D;
+            pos.x -= movespeed * Time.deltaTime;
+            if (pos.x <= -1426)
+                pos.x = 1409;
+            fish.GetComponent<RectTransform>().anchoredPosition3D = pos;
         }
     }
     IEnumerator startgame()

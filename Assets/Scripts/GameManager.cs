@@ -19,9 +19,10 @@ public class GameManager
     public int maxHP = 100;
     public int MP = 20;
     public int maxMP = 100;
-    public int fishamount = 200;
+    public int fishamount = 300;
     public int trashamount = 200;
     public int year = 1992;
+    public List<AudioClip> toplay = new List<AudioClip>();
     public List<string> jiazhouwan = new List<string>(new string[] { "alasijia", "jiazhouwaihai", "xiaweiyi" });
     public List<string> alasijia = new List<string>(new string[] { "jiazhouwaihai", "bailinghai" });
     public List<string> jiazhouwaihai = new List<string>(new string[] { "alasijia", "xiaweiyi", "beitaipingyang" });
@@ -43,7 +44,7 @@ public class GameManager
     public bool over50 = false;
     public List<string> we = new List<string>(new string[] { "也许，等待另一只鲸的出现，需要的不只是时间而已", "游戏设计 | Game Design：Dapao、BoringFish、Thirteen\n" +
         "音乐音效 | Music&SFX: DaPao、Thirteen\n配音 | CV: Meredith、OliverK、Thirteen\n程序 | Program: BoringFish\n场景 | Art&Model: DaPao\n文案 | PlayWright: Thirteen",
-         "指导老师 | Instructor：朱伟 WilsonZhu","A.L.I.C.E关爱委员会 荣誉出品"});
+         "指导老师 | Instructor：朱伟 WilsonZhu"});
 
 
     public void changehp(int hpchange)
