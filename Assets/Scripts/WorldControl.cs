@@ -19,10 +19,12 @@ public class WorldControl : MonoBehaviour
     private GameObject mpt;
     public bool cando;
     private bool low;
+    public bool stoplow;
   
     // Start is called before the first frame update
     void Start()
     {
+        stoplow = false;
         low = false;
         cando = false;
         canvas = GameObject.Find("Canvas");
@@ -128,16 +130,18 @@ public class WorldControl : MonoBehaviour
     }
     public void becomeblack(AsyncOperation op)
     {
+        stoplow = true;
         Tweener tw= black.GetComponent<Image>().DOFade(1, 3f);
         tw.OnComplete(delegate { op.allowSceneActivation = true; });
     }
     public void showdialogone(AsyncOperation op)
     {
+        stoplow = true;
         Tweener tw = black.GetComponent<Image>().DOFade(1, 3f);
         tw.OnComplete(delegate { StartCoroutine("showdialog", op); });
     }
     IEnumerator showdialog(AsyncOperation op)
-    {
+    {      
         foreach (string p in GameManager.gameManager.dialogone)
         {
             dialog.GetComponent<Text>().text = p;
@@ -162,7 +166,7 @@ public class WorldControl : MonoBehaviour
     }
     IEnumerator hplow()
     {
-        while(true)
+        while(!stoplow)
         {
             Tweener tw= black.GetComponent<Image>().DOFade(0.6f, 2f);
             tw.OnComplete(delegate { tw = black.GetComponent<Image>().DOFade(0, 1f); });

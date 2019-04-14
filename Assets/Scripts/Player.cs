@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GameManager.gameManager.currentplace!="加州湾")
+            GameManager.gameManager.MP -= 60;
         beat = false;
         rigid = GetComponent<Rigidbody>();
         audioSources = GetComponents<AudioSource>();
@@ -101,8 +103,6 @@ public class Player : MonoBehaviour
             audioSources[1].Play();
             beat = true;
         }
-        else
-            audioSources[1].Stop();
         if (Input.GetMouseButtonDown(1))
         {
             int index = (int)Random.Range(1, 5f);
@@ -177,10 +177,10 @@ public class Player : MonoBehaviour
                 op = GameManager.gameManager.loadscene("2.Map");
                 GameManager.gameManager.fishamount = (int)(0.7 * GameManager.gameManager.fishamount);
                 GameManager.gameManager.trashamount = (int)(1.3 * GameManager.gameManager.trashamount);
-                GameManager.gameManager.year += 5;
-                GameManager.gameManager.MP -= 60;
+                GameManager.gameManager.year += 5;               
                 if(GameManager.gameManager.currentplace=="加州湾"&& GameManager.gameManager.dialogoneplayed==false)
                 {
+                    audioSources[1].Stop();
                     GameObject.Find("Canvas").SendMessage("showdialogone", op);
                     GameManager.gameManager.dialogoneplayed = true;
                     AudioClip clip = GameManager.gameManager.getline("离开加州湾");
