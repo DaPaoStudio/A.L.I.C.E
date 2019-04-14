@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
                 op = GameManager.gameManager.loadscene("2.Map");
                 GameObject.Find("Canvas").SendMessage("tiptwo", false);
                 GameManager.gameManager.fishamount = (int)(0.7 * GameManager.gameManager.fishamount);
-                GameManager.gameManager.trashamount = (int)(1.3 * GameManager.gameManager.trashamount);
+                GameManager.gameManager.trashamount = (int)(1.5 * GameManager.gameManager.trashamount);
                 GameManager.gameManager.year += 5;
                 hasgone = true;
                 if(GameManager.gameManager.currentplace=="加州湾"&& GameManager.gameManager.dialogoneplayed==false)
