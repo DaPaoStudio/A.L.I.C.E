@@ -8,24 +8,20 @@ using DG.Tweening;
 public class TitleManager : MonoBehaviour
 {
     private GameObject canvas;
-    private GameObject jelly;
-    private GameObject jelly1;
-    private GameObject jelly2;
+    //private GameObject jelly;
+    //private GameObject jelly1;
+    //private GameObject jelly2;
     private GameObject presskey;
     private float fadespeed;
-    private float movespeed;
+    //private float movespeed;
     private bool isfade = true;
-    private float jellyfishup;
-    private float jellyfishdown;
-    private float jellyfishup1;
-    private float jellyfishdown1;
-    private float jellyfishup2;
-    private float jellyfishdown2;
-    private bool isup = true;
-    private GameObject[] bubbles;
-    private GameObject[] fishes;
-    private GameObject[] jellyfishes;
-    private float bubblemovespeed;
+    //private float jellyfishup;
+    //private float jellyfishdown;
+    //private bool isup = true;
+    //private GameObject[] bubbles;
+    //private GameObject[] fishes;
+    //private GameObject[] jellyfishes;
+    //private float bubblemovespeed;
     private AudioSource AudioSource;
     private GameObject black;
     private GameObject dialog;
@@ -37,17 +33,17 @@ public class TitleManager : MonoBehaviour
     {
         dialog =transform.Find("dialog").gameObject;
         canvas = GameObject.Find("Canvas");
-        jelly = canvas.transform.Find("jellyfish").gameObject;
-        jelly1 = canvas.transform.Find("jellyfish1").gameObject;
-        jelly2 = canvas.transform.Find("jellyfish2").gameObject;
-        jellyfishup = jelly.transform.position.y + 40;
-        jellyfishdown = jelly.transform.position.y - 20;
+        //jelly = canvas.transform.Find("jellyfish").gameObject;
+        //jelly1 = canvas.transform.Find("jellyfish1").gameObject;
+        //jelly2 = canvas.transform.Find("jellyfish2").gameObject;
+        //jellyfishup = jelly.transform.position.y + 40;
+        //jellyfishdown = jelly.transform.position.y - 20;
         presskey = canvas.transform.Find("Press Any Key").gameObject;
         fadespeed = 1.2f;
-        movespeed = 5.0f;
-        bubbles = GameObject.FindGameObjectsWithTag("bubble");
-        fishes = GameObject.FindGameObjectsWithTag("fish");
-        bubblemovespeed = 40f;
+        //movespeed = 5.0f;
+        //bubbles = GameObject.FindGameObjectsWithTag("bubble");
+        //fishes = GameObject.FindGameObjectsWithTag("fish");
+        //bubblemovespeed = 40f;
         AudioSource = GetComponent<AudioSource>();
         AudioSource.clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
         black = canvas.transform.Find("black").gameObject;
@@ -57,9 +53,9 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         presskeymove();
-        jellyfishmove();
-        bubblesmove();
-        fishesmove();
+        //jellyfishmove();
+        //bubblesmove();
+        //fishesmove();
         if (Input.anyKeyDown && isdo == false)
         {
             GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
@@ -68,31 +64,31 @@ public class TitleManager : MonoBehaviour
         }
     }
 
-    void jellyfishmove()
-    {
-        Vector3 pos = jelly.transform.position;
-        Vector3 pos1 = jelly1.transform.position;
-        Vector3 pos2 = jelly2.transform.position;
-        if (isup)
-        {
-            pos.y += movespeed * Time.deltaTime;
-            pos1.y += movespeed * Time.deltaTime;
-            pos2.y += movespeed * Time.deltaTime;
-            if (pos.y >= jellyfishup)
-                isup = false;
-        }
-        else
-        {
-            pos.y -= movespeed * Time.deltaTime;
-            pos1.y -= movespeed * Time.deltaTime;
-            pos2.y -= movespeed * Time.deltaTime;
-            if (pos.y <= jellyfishdown)
-                isup = true;
-        }
-        jelly.transform.position = pos;
-        jelly1.transform.position = pos1;
-        jelly2.transform.position = pos2;
-    }
+    //void jellyfishmove()
+    //{
+    //    Vector3 pos = jelly.transform.position;
+    //    Vector3 pos1 = jelly1.transform.position;
+    //    Vector3 pos2 = jelly2.transform.position;
+    //    if (isup)
+    //    {
+    //        pos.y += movespeed * Time.deltaTime;
+    //        pos1.y += movespeed * Time.deltaTime;
+    //        pos2.y += movespeed * Time.deltaTime;
+    //        if (pos.y >= jellyfishup)
+    //            isup = false;
+    //    }
+    //    else
+    //    {
+    //        pos.y -= movespeed * Time.deltaTime;
+    //        pos1.y -= movespeed * Time.deltaTime;
+    //        pos2.y -= movespeed * Time.deltaTime;
+    //        if (pos.y <= jellyfishdown)
+    //            isup = true;
+    //    }
+    //    jelly.transform.position = pos;
+    //    jelly1.transform.position = pos1;
+    //    jelly2.transform.position = pos2;
+    //}
 
     void presskeymove()
     {
@@ -110,28 +106,28 @@ public class TitleManager : MonoBehaviour
                 isfade = true;
         }
     }
-    void bubblesmove()
-    {
-        foreach (var bubble in bubbles)
-        {
-            Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition3D;
-            pos.y += bubblemovespeed * Time.deltaTime;
-            if (pos.y >= 842)
-                pos.y = -600;
-            bubble.GetComponent<RectTransform>().anchoredPosition3D = pos;
-        }
-    }
-    void fishesmove()
-    {
-        foreach (var fish in fishes)
-        {
-            Vector3 pos = fish.GetComponent<RectTransform>().anchoredPosition3D;
-            pos.x -= movespeed * Time.deltaTime;
-            if (pos.x <= -1426)
-                pos.x = 1409;
-            fish.GetComponent<RectTransform>().anchoredPosition3D = pos;
-        }
-    }
+    //void bubblesmove()
+    //{
+    //    foreach (var bubble in bubbles)
+    //    {
+    //        Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition3D;
+    //        pos.y += bubblemovespeed * Time.deltaTime;
+    //        if (pos.y >= 842)
+    //            pos.y = -600;
+    //        bubble.GetComponent<RectTransform>().anchoredPosition3D = pos;
+    //    }
+    //}
+    //void fishesmove()
+    //{
+    //    foreach (var fish in fishes)
+    //    {
+    //        Vector3 pos = fish.GetComponent<RectTransform>().anchoredPosition3D;
+    //        pos.x -= movespeed * Time.deltaTime;
+    //        if (pos.x <= -1426)
+    //            pos.x = 1409;
+    //        fish.GetComponent<RectTransform>().anchoredPosition3D = pos;
+    //    }
+    //}
     IEnumerator startgame()
     {
         //GameObject.Find("Main Camera").GetComponent<AudioSource>().enabled = false;
