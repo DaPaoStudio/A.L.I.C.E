@@ -10,6 +10,7 @@ TagManager:
   - fish
   - walll
   - walld
+  - jellyfish
   layers:
   - Default
   - TransparentFX

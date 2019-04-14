@@ -77,35 +77,38 @@ public class EndTwo : MonoBehaviour
         }
         black.GetComponent<Image>().DOFade(0, 2f);
         yield return new WaitForSeconds(5);
-        black.GetComponent<Image>().DOFade(1, 2f);
+        black.GetComponent<Image>().DOFade(1, 2.5f);
         yield return new WaitForSeconds(3);
         image1.SetActive(false);
         black.GetComponent<Image>().DOFade(0, 2f);
-        yield return new WaitForSeconds(9);
-        black.GetComponent<Image>().DOFade(1, 2f);
+        yield return new WaitForSeconds(12);
+        black.GetComponent<Image>().DOFade(1, 2.5f);
         yield return new WaitForSeconds(3);
-        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume = x, 1f, 3);
+        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume = x, 1f, 10);
         //word
         text.GetComponent<Text>().text = word1;
-        text.GetComponent<Text>().fontSize = 20;
+        text.GetComponent<Text>().fontSize = 36;
         text.GetComponent<Text>().DOFade(1, 3f);
         yield return new WaitForSeconds(5);
         text.GetComponent<Text>().DOFade(0, 3f);
         yield return new WaitForSeconds(4);
+
         text.GetComponent<Text>().text = word2;
-        text.GetComponent<Text>().fontSize = 20;
+        text.GetComponent<Text>().fontSize = 36;
         text.GetComponent<Text>().DOFade(1, 3f);
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(10);
         text.GetComponent<Text>().DOFade(0, 3f);
         yield return new WaitForSeconds(4);
+
         text.GetComponent<Text>().text = word3;
-        text.GetComponent<Text>().fontSize = 20;
+        text.GetComponent<Text>().fontSize = 36;
         text.GetComponent<Text>().DOFade(1, 3f);
         yield return new WaitForSeconds(8);
         text.GetComponent<Text>().DOFade(0, 3f);
         yield return new WaitForSeconds(4);
+
         text.GetComponent<Text>().text = word4;
-        text.GetComponent<Text>().fontSize = 30;
+        text.GetComponent<Text>().fontSize = 108;
         text.GetComponent<Text>().DOFade(1, 3f);
         yield return new WaitForSeconds(10);
         Application.Quit();

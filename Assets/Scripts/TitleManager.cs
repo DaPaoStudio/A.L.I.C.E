@@ -9,36 +9,45 @@ public class TitleManager : MonoBehaviour
 {
     private GameObject canvas;
     private GameObject jelly;
+    private GameObject jelly1;
+    private GameObject jelly2;
     private GameObject presskey;
     private float fadespeed;
     private float movespeed;
     private bool isfade = true;
     private float jellyfishup;
     private float jellyfishdown;
+    private float jellyfishup1;
+    private float jellyfishdown1;
+    private float jellyfishup2;
+    private float jellyfishdown2;
     private bool isup = true;
     private GameObject[] bubbles;
     private GameObject[] fishes;
+    private GameObject[] jellyfishes;
     private float bubblemovespeed;
     private AudioSource AudioSource;
     private GameObject black;
     private GameObject dialog;
     private bool isdo = false;
     private List<string> dialogs = new List<string>(new string[] {"孤独是永恒的","他像冰冷的深海海水","不论天空中是风和日丽还是狂风暴雨","如果你发出的声音谁也不能理解",
-       "--那么","你，会觉得孤独吗?"});
+       "--那么","你，会觉得孤独吗?","这是她的故事，也是他们的故事。\n 是渺小的人，与巨大的鲸的故事。"});
     // Start is called before the first frame update
     void Start()
     {
         dialog =transform.Find("dialog").gameObject;
         canvas = GameObject.Find("Canvas");
         jelly = canvas.transform.Find("jellyfish").gameObject;
-        jellyfishup = jelly.transform.position.y + 100;
-        jellyfishdown = jelly.transform.position.y - 60;
+        jelly1 = canvas.transform.Find("jellyfish1").gameObject;
+        jelly2 = canvas.transform.Find("jellyfish2").gameObject;
+        jellyfishup = jelly.transform.position.y + 40;
+        jellyfishdown = jelly.transform.position.y - 20;
         presskey = canvas.transform.Find("Press Any Key").gameObject;
-        fadespeed = 2.0f;
-        movespeed = 30.0f;
+        fadespeed = 1.2f;
+        movespeed = 5.0f;
         bubbles = GameObject.FindGameObjectsWithTag("bubble");
         fishes = GameObject.FindGameObjectsWithTag("fish");
-        bubblemovespeed = 20f;
+        bubblemovespeed = 40f;
         AudioSource = GetComponent<AudioSource>();
         AudioSource.clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
         black = canvas.transform.Find("black").gameObject;
@@ -61,19 +70,27 @@ public class TitleManager : MonoBehaviour
     void jellyfishmove()
     {
         Vector3 pos = jelly.transform.position;
+        Vector3 pos1 = jelly1.transform.position;
+        Vector3 pos2 = jelly2.transform.position;
         if (isup)
         {
             pos.y += movespeed * Time.deltaTime;
+            pos1.y += movespeed * Time.deltaTime;
+            pos2.y += movespeed * Time.deltaTime;
             if (pos.y >= jellyfishup)
                 isup = false;
         }
         else
         {
             pos.y -= movespeed * Time.deltaTime;
+            pos1.y -= movespeed * Time.deltaTime;
+            pos2.y -= movespeed * Time.deltaTime;
             if (pos.y <= jellyfishdown)
                 isup = true;
         }
         jelly.transform.position = pos;
+        jelly1.transform.position = pos1;
+        jelly2.transform.position = pos2;
     }
 
     void presskeymove()
