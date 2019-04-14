@@ -15,14 +15,22 @@ public class WorldControl : MonoBehaviour
     private GameObject black;
     private GameObject hudtip;
     private GameObject dialog;
+    private GameObject hpt;
+    private GameObject mpt;
+    public bool cando;
+    private bool low;
   
     // Start is called before the first frame update
     void Start()
     {
+        low = false;
+        cando = false;
         canvas = GameObject.Find("Canvas");
         dialog = transform.Find("dialog").gameObject;
         HP = canvas.transform.Find("HP").gameObject;
         EN= canvas.transform.Find("EN").gameObject;
+        hpt= transform.Find("hpt").gameObject;
+        mpt= transform.Find("mpt").gameObject;
         showplace = GameObject.Find("showplace").gameObject;
         black = GameObject.Find("black").gameObject;
         hudtip = transform.Find("Text").gameObject;
@@ -39,6 +47,11 @@ public class WorldControl : MonoBehaviour
         showHPandEN();
         if (GameManager.gameManager.HP <= 0)
             die();
+        if (GameManager.gameManager.HP <= 10&&low==false)
+        {
+            StartCoroutine("hplow");
+            low = true;
+        }
     }
 
     void die()
@@ -60,6 +73,7 @@ public class WorldControl : MonoBehaviour
         showplace.GetComponent<Text>().DOFade(0, 2f);
         yield return new WaitForSeconds(3);
         black.GetComponent<Image>().DOFade(0, 2f);
+        cando = true;
     }
     void createfish()
     {
@@ -132,5 +146,26 @@ public class WorldControl : MonoBehaviour
             yield return new WaitForSeconds(3f);
         }
         op.allowSceneActivation = true;
+    }
+    public void hptip(int p)
+    {
+        hpt.GetComponent<Text>().text = p.ToString();
+        Tweener tw = hpt.GetComponent<Text>().DOFade(1, 1f);
+        tw.OnComplete(delegate { hpt.GetComponent<Text>().DOFade(0, 1f); });
+    }
+    public void mptip(int p)
+    {
+        mpt.GetComponent<Text>().text ="+"+ p.ToString();
+        Tweener tw = mpt.GetComponent<Text>().DOFade(1, 1f);
+        tw.OnComplete(delegate { mpt.GetComponent<Text>().DOFade(0, 1f); });
+    }
+    IEnumerator hplow()
+    {
+        while(true)
+        {
+            Tweener tw= black.GetComponent<Image>().DOFade(0.6f, 2f);
+            tw.OnComplete(delegate { tw = black.GetComponent<Image>().DOFade(0, 1f); });
+            yield return new WaitForSeconds(3);
+        }
     }
 }

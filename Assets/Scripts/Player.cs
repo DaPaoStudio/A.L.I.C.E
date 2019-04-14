@@ -14,9 +14,13 @@ public class Player : MonoBehaviour
     private bool isplay = false;
     private GameObject partical;
     private bool istip = false;
+    private bool canplayclip;
+    private bool beat;
+    private bool particalplay = false;
     // Start is called before the first frame update
     void Start()
     {
+        beat = false;
         rigid = GetComponent<Rigidbody>();
         audioSources = GetComponents<AudioSource>();
         audioSources[1].clip = GameManager.gameManager.getclip(@"SFX/" + "beats");
@@ -27,19 +31,35 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movecontrol();
-        audioplay();
-        if (slowdown)
-            rigid.velocity = Vector3.Lerp(rigid.velocity, transform.forward * movespeed, 0.8f);
-        lineplay();
-        playcliplist();
-        if (Input.GetMouseButtonDown(0))
-            partical.GetComponent<ParticleSystem>().Play();
-        if (Input.GetMouseButtonUp(0))
-            partical.GetComponent<ParticleSystem>().Stop();
-        if(GameManager.gameManager.MP>=80&&istip==false)
+        //Debug.Log(rigid.velocity);
+        if (GameObject.Find("Canvas").GetComponent<WorldControl>().cando)
         {
-            GameObject.Find("Canvas").SendMessage("tip", "Alice以为远行做好了准备");
+            movecontrol();
+            audioplay();
+            /* if (slowdown && slowtimer >= 0.2f)
+             {
+                 rigid.velocity = Vector3.Lerp(rigid.velocity, transform.forward * movespeed, 0.8f);
+                 slowtimer = 0;
+             }*/
+            if(slowdown)
+                rigid.velocity = Vector3.Lerp(rigid.velocity, transform.forward * movespeed, 0.01f);
+            lineplay();
+            playcliplist();
+            if (rigid.velocity.magnitude >= 7 && particalplay == false)
+            {
+                partical.GetComponent<ParticleSystem>().Play();
+                particalplay = true;
+            }
+            if (rigid.velocity.magnitude <= 7)
+            {
+                partical.GetComponent<ParticleSystem>().Stop();
+                particalplay = false;
+            }
+            if (GameManager.gameManager.MP >= 80 && istip == false)
+            {
+                GameObject.Find("Canvas").SendMessage("tip", "Alice以为远行做好了准备");
+                istip = true;
+            }
         }
     }
 
@@ -63,7 +83,9 @@ public class Player : MonoBehaviour
             slowdown = false;
         }
         else
+        {
             slowdown = true;
+        }
         Vector3 angle = transform.eulerAngles;
         transform.eulerAngles = limitrotate(angle);
         float value = Mathf.Clamp(rigid.velocity.magnitude, 0, maxspeed);
@@ -72,8 +94,12 @@ public class Player : MonoBehaviour
 
     void audioplay()
     {
-        if (GameManager.gameManager.HP <= 10)
+        if (GameManager.gameManager.HP <= 10 && beat == false)
+        {
+            audioSources[1].loop = true;
             audioSources[1].Play();
+            beat = true;
+        }
         else
             audioSources[1].Stop();
         if (Input.GetMouseButtonDown(1))
@@ -108,22 +134,36 @@ public class Player : MonoBehaviour
     {
         if (collision.transform.tag == "fish")
         {
-            GameManager.gameManager.changemp(1);
-            collision.gameObject.SetActive(false);
+            if (GameObject.Find("Canvas").GetComponent<WorldControl>().cando)
+            {
+                int change= (int)Random.Range(1, 3);
+                GameManager.gameManager.changemp(change);
+                collision.gameObject.SetActive(false);
+                audioSources[3].clip = GameManager.gameManager.getclip(@"SFX/Chew");
+                audioSources[3].Play();
+                GameObject.Find("Canvas").SendMessage("mptip", 1);
+            }
         }
         else if (collision.transform.tag == "trash")
         {
-            GameManager.gameManager.changehp((int)Random.Range(-5, -1));
-            collision.gameObject.SetActive(false);
-            if(GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.firsteattrash==false)
+            if (GameObject.Find("Canvas").GetComponent<WorldControl>().cando)
             {
-                AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次吃到垃圾");
-                audioSources[2].clip = clip;
-                if (audioSources[2].isPlaying)
-                    GameManager.gameManager.toplay.Add(clip);
-                else
-                    audioSources[2].Play();
-                GameManager.gameManager.firsteattrash = true;
+                int change = (int)Random.Range(-5, -1);
+                GameManager.gameManager.changehp(change);
+                GameObject.Find("Canvas").SendMessage("hptip", change);
+                collision.gameObject.SetActive(false);
+                if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.firsteattrash == false)
+                {
+                    AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次吃到垃圾");
+                    audioSources[2].clip = clip;
+                    if (audioSources[2].isPlaying)
+                        GameManager.gameManager.toplay.Add(clip);
+                    else
+                        audioSources[2].Play();
+                    GameManager.gameManager.firsteattrash = true;
+                }
+                audioSources[3].clip = GameManager.gameManager.getclip(@"SFX/Crash");
+                audioSources[3].Play();
             }
         }
         else if (collision.transform.tag == "walll")
@@ -132,9 +172,10 @@ public class Player : MonoBehaviour
             if (GameManager.gameManager.MP >= 80)
             {
                 op = GameManager.gameManager.loadscene("2.Map");
-                GameManager.gameManager.fishamount = (int)0.8 * GameManager.gameManager.fishamount;
-                GameManager.gameManager.trashamount = (int)1.5 * GameManager.gameManager.trashamount;
+                GameManager.gameManager.fishamount = (int)0.7 * GameManager.gameManager.fishamount;
+                GameManager.gameManager.trashamount = (int)1.3 * GameManager.gameManager.trashamount;
                 GameManager.gameManager.year += 5;
+                GameManager.gameManager.MP -= 60;
                 if(GameManager.gameManager.currentplace=="加州湾"&& GameManager.gameManager.dialogoneplayed==false)
                 {
                     GameObject.Find("Canvas").SendMessage("showdialogone", op);
@@ -148,7 +189,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                GameObject.Find("Canvas").SendMessage("tip","能量不足");
+                GameObject.Find("Canvas").SendMessage("tip","Alice还没有为远行做好准备");
             }
         }
     }

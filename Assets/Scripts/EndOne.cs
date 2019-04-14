@@ -150,6 +150,6 @@ public class EndOne : MonoBehaviour
         text.GetComponent<Text>().fontSize = 108;
         text.GetComponent<Text>().DOFade(1, 3f);
         yield return new WaitForSeconds(10);
-        Application.Quit();
+        //Application.Quit();
     }
 }
