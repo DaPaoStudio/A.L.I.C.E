@@ -13,7 +13,7 @@ public class EndTwo : MonoBehaviour
     private GameObject geqian;
     private AudioSource Audio;
     private string word1 = "也许长久的孤独，只是为了等待另一个同样的声音出现。\n就算发出的声音谁都不理解，也依然活着，唱着\n这份情感并非虚假。";
-    private string word2 = "本游戏所叙述的故事根据真实事件改变：\n在现实当中，Alice的结局同样压抑——我们已经失去了Alice的踪迹，" +
+    private string word2 = "本游戏所叙述的故事根据真实事件改编：\n在现实当中，Alice的结局同样压抑——我们已经失去了Alice的踪迹，" +
         "\n不论是出于什么原因，是Alice死了，或是人类放弃了观察。\n不知何时能相见是比无法再相见更加残酷的刑罚，" +
         "\n这个孤独的歌唱家再也没有听众，\n但我们都知道，她依然会唱着。";
     private string word3 = "于是我们希望Alice不是孤独的，我们希望大海的仙境只是美好与浪漫。\n我们已经做了太多出格的事情。" +
