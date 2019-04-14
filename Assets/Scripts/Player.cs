@@ -107,9 +107,12 @@ public class Player : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            int index = (int)Random.Range(1, 5f);
-            audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
-            audioSources[0].Play();
+            if (audioSources[0].isPlaying==false)
+            {
+                int index = (int)Random.Range(1, 5f);
+                audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
+                audioSources[0].Play();
+            }
             if (GameManager.gameManager.currentplace == "加州湾" && GameManager.gameManager.firstsonginjiazhou == false)
             {
                 StartCoroutine("jinggeline", "进入加州湾第一次唱响鲸歌");
