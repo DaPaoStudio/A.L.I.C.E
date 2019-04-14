@@ -22,10 +22,14 @@ public class WorldControl : MonoBehaviour
     public bool stoplow;
     private GameObject intro;
     private bool deathplay = false;
+    private float timer ;
+    public float timer2;
   
     // Start is called before the first frame update
     void Start()
     {
+        timer2 = 0;
+        timer = 0;
         stoplow = false;
         low = false;
         cando = false;
@@ -52,6 +56,24 @@ public class WorldControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        timer2 += Time.deltaTime;
+        if(GameManager.gameManager.MP<=10&&timer>=3)
+        {
+            GameManager.gameManager.changehp(-1);
+            hptip(-1);
+            timer = 0;
+        }
+        if(timer2>=10)
+        {
+            GameManager.gameManager.changehp(-1);
+            hptip(-1);
+            timer2 = 0;
+        }
+        if (timer >= 4)
+            timer = 4;
+        if (timer2 >= 14)
+            timer =14;
         showHPandEN();
         if (GameManager.gameManager.HP <= 0 && deathplay == false)
         {

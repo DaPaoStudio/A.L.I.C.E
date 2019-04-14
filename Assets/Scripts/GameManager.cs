@@ -24,7 +24,7 @@ public class GameManager
     public int maxHP = 100;
     public int MP = 20;
     public int maxMP = 100;
-    public int fishamount = 300;
+    public int fishamount = 210;
     public int trashamount = 200;
     public int year = 1992;
     public List<AudioClip> toplay = new List<AudioClip>();

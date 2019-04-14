@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         waittime += Time.deltaTime;
         hasgone = false;
         if(GameManager.gameManager.currentplace!="加州湾")
-            GameManager.gameManager.MP -= 60;
+            GameManager.gameManager.MP -= 70;
         beat = false;
         rigid = GetComponent<Rigidbody>();
         audioSources = GetComponents<AudioSource>();
@@ -154,13 +154,14 @@ public class Player : MonoBehaviour
                 audioSources[3].clip = GameManager.gameManager.getclip(@"SFX/Chew");
                 audioSources[3].Play();
                 GameObject.Find("Canvas").SendMessage("mptip", 1);
+                GameObject.Find("Canvas").GetComponent<WorldControl>().timer2 = 0;
             }
         }
         else if (collision.transform.tag == "trash")
         {
             if (GameObject.Find("Canvas").GetComponent<WorldControl>().cando)
             {
-                int change = (int)Random.Range(-5, -1);
+                int change = (int)Random.Range(-9, -2);
                 GameManager.gameManager.changehp(change);
                 GameObject.Find("Canvas").SendMessage("hptip", change);
                 collision.gameObject.SetActive(false);
@@ -204,7 +205,7 @@ public class Player : MonoBehaviour
                 else
                     GameObject.Find("Canvas").SendMessage("becomeblack",op);
             }
-            else
+            if(GameManager.gameManager.MP <= 80)
             {
                 GameObject.Find("Canvas").SendMessage("tip","Alice还没有为远行做好准备");
             }
