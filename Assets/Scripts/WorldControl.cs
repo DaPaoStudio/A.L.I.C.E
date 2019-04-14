@@ -58,16 +58,16 @@ public class WorldControl : MonoBehaviour
     {
         timer += Time.deltaTime;
         timer2 += Time.deltaTime;
-        if(GameManager.gameManager.MP<=10&&timer>=3)
+        if(GameManager.gameManager.MP<=1&&timer>=3)
         {
             GameManager.gameManager.changehp(-1);
             hptip(-1);
             timer = 0;
         }
-        if(timer2>=10)
+        if(timer2>=8&& GameManager.gameManager.MP>0)
         {
-            GameManager.gameManager.changehp(-1);
-            hptip(-1);
+            GameManager.gameManager.changemp(-1);
+            mptip(-1);
             timer2 = 0;
         }
         if (timer >= 4)
@@ -194,7 +194,10 @@ public class WorldControl : MonoBehaviour
     }
     public void mptip(int p)
     {
-        mpt.GetComponent<Text>().text ="+"+ p.ToString();
+        if(p>=0)
+            mpt.GetComponent<Text>().text ="+"+ p.ToString();
+        else
+            mpt.GetComponent<Text>().text =  p.ToString();
         Tweener tw = mpt.GetComponent<Text>().DOFade(1, 1f);
         tw.OnComplete(delegate { mpt.GetComponent<Text>().DOFade(0, 1f); });
     }
