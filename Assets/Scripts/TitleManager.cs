@@ -174,13 +174,13 @@ public class TitleManager : MonoBehaviour
     {
         position.transform.Find("Text").GetComponent<Text>().text = "正向" + "√";
         reverse.transform.Find("Text").GetComponent<Text>().text = "反转" ;
-        GameManager.gameManager.isposition = true;
+        GameManager.gameManager.isposition = false;
     }
     public void Reverse()
     {
         position.transform.Find("Text").GetComponent<Text>().text = "正向" ;
         reverse.transform.Find("Text").GetComponent<Text>().text = "反转" + "√";
-        GameManager.gameManager.isposition = false;
+        GameManager.gameManager.isposition = true;
     }
     public void Mouseslider()
     {
