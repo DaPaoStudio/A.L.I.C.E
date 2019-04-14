@@ -70,7 +70,7 @@ public class WorldControl : MonoBehaviour
             if (SceneManager.GetActiveScene().name== "1.California")
             {
                 float positionx = Random.Range(-3f, 97f);
-                float positiony = Random.Range(28f, 108f);
+                float positiony = Random.Range(18f, 108f);
                 float positionz = Random.Range(-37f, 63f);
                 fish.transform.position = new Vector3(positionx, positiony, positionz);
             }
@@ -92,7 +92,7 @@ public class WorldControl : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "1.California")
             {
                 float positionx = Random.Range(-3f, 97f);
-                float positiony = Random.Range(20f, 78f);
+                float positiony = Random.Range(15f, 78f);
                 float positionz = Random.Range(-37f, 63f);
                 fish.transform.position = new Vector3(positionx, positiony, positionz);
             }
