@@ -7,6 +7,13 @@ using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
+    public GameObject value;
+    public GameObject btnback;
+    public GameObject mouseslider;
+    public GameObject position;
+    public GameObject reverse;
+    private GameObject setting;
+    private GameObject settings;
     private GameObject canvas;
     //private GameObject jelly;
     //private GameObject jelly1;
@@ -31,6 +38,8 @@ public class TitleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setting = transform.Find("Settingss").gameObject;
+        settings = transform.Find("Settings").gameObject;
         dialog =transform.Find("dialog").gameObject;
         canvas = GameObject.Find("Canvas");
         //jelly = canvas.transform.Find("jellyfish").gameObject;
@@ -39,7 +48,7 @@ public class TitleManager : MonoBehaviour
         //jellyfishup = jelly.transform.position.y + 40;
         //jellyfishdown = jelly.transform.position.y - 20;
         presskey = canvas.transform.Find("Press Any Key").gameObject;
-        fadespeed = 1.2f;
+        fadespeed = 0.8f;
         //movespeed = 5.0f;
         //bubbles = GameObject.FindGameObjectsWithTag("bubble");
         //fishes = GameObject.FindGameObjectsWithTag("fish");
@@ -60,6 +69,7 @@ public class TitleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isdo == false)
         {
             GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
+            settings.SetActive(false);
             StartCoroutine("startgame");
             isdo = true;
         }
@@ -151,5 +161,30 @@ public class TitleManager : MonoBehaviour
         AudioSources[0].Play();
         yield return new WaitForSeconds(5f);
         op.allowSceneActivation = true;
+    }
+    public void Setting()
+    {
+        setting.SetActive(true);
+    }
+    public void Btnback()
+    {
+        setting.SetActive(false);
+    }
+    public void Positive()
+    {
+        position.transform.Find("Text").GetComponent<Text>().text = "正向" + "√";
+        reverse.transform.Find("Text").GetComponent<Text>().text = "反转" ;
+        GameManager.gameManager.isposition = true;
+    }
+    public void Reverse()
+    {
+        position.transform.Find("Text").GetComponent<Text>().text = "正向" ;
+        reverse.transform.Find("Text").GetComponent<Text>().text = "反转" + "√";
+        GameManager.gameManager.isposition = false;
+    }
+    public void Mouseslider()
+    {
+        GameManager.gameManager.mouse = mouseslider.GetComponent<Slider>().value;
+        value.GetComponent<Text>().text = mouseslider.GetComponent<Slider>().value.ToString();
     }
 }

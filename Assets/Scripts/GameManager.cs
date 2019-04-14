@@ -15,6 +15,11 @@ public class GameManager
             return gamemanager;
         }
     }
+    public float mouse=50f;
+    public bool isposition = true;
+    public bool waitfirst = false;
+    public bool waitsecond = false;
+    public bool waitthird = false;
     public int HP = 100;
     public int maxHP = 100;
     public int MP = 20;

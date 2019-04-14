@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
     private AudioSource[] audioSources;
-    private float rotatespeed =200;
+    private float rotatespeed =120+GameManager.gameManager.mouse;
     private float maxspeed=10;
     private float movespeed = 1;
     private bool slowdown = true;
@@ -18,9 +18,11 @@ public class Player : MonoBehaviour
     private bool beat;
     private bool particalplay = false;
     private bool hasgone;
+    private float waittime = 0;
     // Start is called before the first frame update
     void Start()
     {
+        waittime += Time.deltaTime;
         hasgone = false;
         if(GameManager.gameManager.currentplace!="加州湾")
             GameManager.gameManager.MP -= 60;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour
                 GameObject.Find("Canvas").SendMessage("tiptwo", true);
                 istip = true;
             }
+            playwait();
         }
     }
 
@@ -80,7 +83,10 @@ public class Player : MonoBehaviour
          if (Input.GetKey(KeyCode.D))
              transform.Rotate(Vector3.up, rotatespeed * Time.deltaTime);*/
         transform.Rotate(Vector3.up, Input.GetAxis("Mouse X") * rotatespeed * Time.deltaTime);
-        transform.Rotate(Vector3.right, Input.GetAxis("Mouse Y") * rotatespeed * Time.deltaTime);
+        if(GameManager.gameManager.isposition)
+            transform.Rotate(Vector3.right, Input.GetAxis("Mouse Y") * rotatespeed * Time.deltaTime);
+        else
+            transform.Rotate(Vector3.right, Input.GetAxis("Mouse Y") * -rotatespeed * Time.deltaTime);
         if (Input.GetMouseButton(0))
         {
             rigid.velocity += transform.forward * 10 * Time.deltaTime;
@@ -167,6 +173,7 @@ public class Player : MonoBehaviour
                     {
                         audioSources[2].clip = clip;
                         audioSources[2].Play();
+                        waittime = 0;
                     }
                     GameManager.gameManager.firsteattrash = true;
                 }
@@ -215,6 +222,7 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
+                waittime = 0;
             }
             GameManager.gameManager.firstacc = true;
         }
@@ -227,6 +235,7 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
+                waittime = 0;
             }
             GameManager.gameManager.firstreducehp = true;
         }
@@ -239,6 +248,7 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
+                waittime = 0;
             }
             GameManager.gameManager.firstreducehp = true;
         }
@@ -251,6 +261,7 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
+                waittime = 0;
             }
             GameManager.gameManager.over50 = true;
         }
@@ -263,6 +274,7 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
+                waittime = 0;
             }
             GameManager.gameManager.over30 = true;
         }
@@ -277,6 +289,7 @@ public class Player : MonoBehaviour
         {
             audioSources[2].clip = clip;
             audioSources[2].Play();
+            waittime = 0;
         }
         if (linename== "在除加州湾以外的地区触发鲸歌并且在加州湾触发过")
             GameManager.gameManager.secondsong = true;
@@ -288,7 +301,53 @@ public class Player : MonoBehaviour
         if(audioSources[2].isPlaying==false&&GameManager.gameManager.toplay.Count>0)
         {
             audioSources[2].clip = GameManager.gameManager.toplay[0];
+            audioSources[2].Play();
+            waittime = 0;
             GameManager.gameManager.toplay.Remove(GameManager.gameManager.toplay[0]);
         }
+    }
+    private void playwait()
+    {
+        if(waittime>=120&&GameManager.gameManager.waitfirst==false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("超过120秒没有语音则播放-1");
+            if (audioSources[2].isPlaying)
+                GameManager.gameManager.toplay.Add(clip);
+            else
+            {
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+                waittime = 0;
+            }
+            GameManager.gameManager.waitfirst = true;
+        }
+        if (waittime >= 120 && GameManager.gameManager.waitfirst == true&& GameManager.gameManager.waitsecond == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("超过120秒没有语音则播放-2");
+            if (audioSources[2].isPlaying)
+                GameManager.gameManager.toplay.Add(clip);
+            else
+            {
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+                waittime = 0;
+            }
+            GameManager.gameManager.waitsecond = true;
+        }
+        if (waittime >= 120 && GameManager.gameManager.waitfirst == true && GameManager.gameManager.waitsecond == true&& GameManager.gameManager.waitthird == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("超过120秒没有语音则播放-3");
+            if (audioSources[2].isPlaying)
+                GameManager.gameManager.toplay.Add(clip);
+            else
+            {
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+                waittime = 0;
+            }
+            GameManager.gameManager.waitthird = true;
+        }
+        if (GameManager.gameManager.waitthird == true)
+            waittime = 0;
     }
 }

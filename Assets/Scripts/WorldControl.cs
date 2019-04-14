@@ -92,7 +92,6 @@ public class WorldControl : MonoBehaviour
     }
     void createfish()
     {
-        Debug.Log(GameManager.gameManager.fishamount);
         for(int i=1;i<=GameManager.gameManager.fishamount;i++)
         {
             int index = Random.Range(1, 25);
