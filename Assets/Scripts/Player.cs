@@ -89,7 +89,8 @@ public class Player : MonoBehaviour
         Vector3 angle = transform.eulerAngles;
         transform.eulerAngles = limitrotate(angle);
         float value = Mathf.Clamp(rigid.velocity.magnitude, 0, maxspeed);
-        rigid.velocity = rigid.velocity * value / rigid.velocity.magnitude;
+        if(rigid.velocity.magnitude>0)
+            rigid.velocity = rigid.velocity * value / rigid.velocity.magnitude;
     }
 
     void audioplay()
@@ -155,11 +156,13 @@ public class Player : MonoBehaviour
                 if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.firsteattrash == false)
                 {
                     AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次吃到垃圾");
-                    audioSources[2].clip = clip;
                     if (audioSources[2].isPlaying)
                         GameManager.gameManager.toplay.Add(clip);
                     else
+                    {
+                        audioSources[2].clip = clip;
                         audioSources[2].Play();
+                    }
                     GameManager.gameManager.firsteattrash = true;
                 }
                 audioSources[3].clip = GameManager.gameManager.getclip(@"SFX/Crash");
@@ -199,64 +202,76 @@ public class Player : MonoBehaviour
         if(GameManager.gameManager.currentplace!="加州湾"&&rigid.velocity.magnitude==maxspeed&&GameManager.gameManager.firstacc==false)
         {
             AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次加速到上限");
-            audioSources[2].clip = clip;
             if (audioSources[2].isPlaying)
                 GameManager.gameManager.toplay.Add(clip);
             else
+            {
+                audioSources[2].clip = clip;
                 audioSources[2].Play();
+            }
             GameManager.gameManager.firstacc = true;
         }
         if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.HP<=50 && GameManager.gameManager.firstreducehp == false)
         {
             AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次受到生命值伤害");
-            audioSources[2].clip = clip;
             if (audioSources[2].isPlaying)
                 GameManager.gameManager.toplay.Add(clip);
             else
+            {
+                audioSources[2].clip = clip;
                 audioSources[2].Play();
+            }
             GameManager.gameManager.firstreducehp = true;
         }
         if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.HP <= 50 && GameManager.gameManager.firstreducehp == false)
         {
             AudioClip clip = GameManager.gameManager.getline("在加州湾以外的地方第一次受到生命值伤害");
-            audioSources[2].clip = clip;
             if (audioSources[2].isPlaying)
                 GameManager.gameManager.toplay.Add(clip);
             else
+            {
+                audioSources[2].clip = clip;
                 audioSources[2].Play();
+            }
             GameManager.gameManager.firstreducehp = true;
         }
         if (GameManager.gameManager.MP >= 50 && GameManager.gameManager.over50 == false)
         {
             AudioClip clip = GameManager.gameManager.getline("能量超过50");
-            audioSources[2].clip = clip;
             if (audioSources[2].isPlaying)
                 GameManager.gameManager.toplay.Add(clip);
             else
+            {
+                audioSources[2].clip = clip;
                 audioSources[2].Play();
+            }
             GameManager.gameManager.over50 = true;
         }
         if (GameManager.gameManager.MP >= 30 && GameManager.gameManager.over30 == false)
         {
             AudioClip clip = GameManager.gameManager.getline("能量超过30");
-            audioSources[2].clip = clip;
             if (audioSources[2].isPlaying)
                 GameManager.gameManager.toplay.Add(clip);
             else
+            {
+                audioSources[2].clip = clip;
                 audioSources[2].Play();
+            }
             GameManager.gameManager.over30 = true;
         }
     }
     IEnumerator jinggeline(string linename)
     {
         AudioClip clip = GameManager.gameManager.getline(linename);
-        audioSources[2].clip = clip;
         yield return new WaitForSeconds(10);
         if (audioSources[2].isPlaying)
             GameManager.gameManager.toplay.Add(clip);
         else
+        {
+            audioSources[2].clip = clip;
             audioSources[2].Play();
-        if(linename== "在除加州湾以外的地区触发鲸歌并且在加州湾触发过")
+        }
+        if (linename== "在除加州湾以外的地区触发鲸歌并且在加州湾触发过")
             GameManager.gameManager.secondsong = true;
         if (linename == "进入加州湾第一次唱响鲸歌")
             GameManager.gameManager.firstsonginjiazhou = true;
