@@ -19,10 +19,13 @@ public class WorldControl : MonoBehaviour
     private GameObject mpt;
     public bool cando;
     private bool low;
+    public bool stoplow;
+    private GameObject intro;
   
     // Start is called before the first frame update
     void Start()
     {
+        stoplow = false;
         low = false;
         cando = false;
         canvas = GameObject.Find("Canvas");
@@ -31,12 +34,14 @@ public class WorldControl : MonoBehaviour
         EN= canvas.transform.Find("EN").gameObject;
         hpt= transform.Find("hpt").gameObject;
         mpt= transform.Find("mpt").gameObject;
+        intro= transform.Find("intro").gameObject;
         showplace = GameObject.Find("showplace").gameObject;
         black = GameObject.Find("black").gameObject;
         hudtip = transform.Find("Text").gameObject;
         createfish();
         createtrash();
         StartCoroutine("show");
+        StartCoroutine("showintro");
         hudtip.GetComponent<Text>().text = GameManager.gameManager.currentplace + " " + GameManager.gameManager.year.ToString();
         showplace.GetComponent<Text>().text = GameManager.gameManager.currentplace + " " + GameManager.gameManager.year.ToString();
     }
@@ -128,16 +133,18 @@ public class WorldControl : MonoBehaviour
     }
     public void becomeblack(AsyncOperation op)
     {
+        stoplow = true;
         Tweener tw= black.GetComponent<Image>().DOFade(1, 3f);
         tw.OnComplete(delegate { op.allowSceneActivation = true; });
     }
     public void showdialogone(AsyncOperation op)
     {
+        stoplow = true;
         Tweener tw = black.GetComponent<Image>().DOFade(1, 3f);
         tw.OnComplete(delegate { StartCoroutine("showdialog", op); });
     }
     IEnumerator showdialog(AsyncOperation op)
-    {
+    {      
         foreach (string p in GameManager.gameManager.dialogone)
         {
             dialog.GetComponent<Text>().text = p;
@@ -162,11 +169,26 @@ public class WorldControl : MonoBehaviour
     }
     IEnumerator hplow()
     {
-        while(true)
+        while(!stoplow)
         {
             Tweener tw= black.GetComponent<Image>().DOFade(0.6f, 2f);
             tw.OnComplete(delegate { tw = black.GetComponent<Image>().DOFade(0, 1f); });
             yield return new WaitForSeconds(3);
         }
+    }
+    public void tiptwo(bool p)
+    {
+        showplace.GetComponent<Text>().text = "Alice已为远行做好了准备";
+        if(p)
+            showplace.GetComponent<Text>().DOFade(1, 2f);
+        else
+            showplace.GetComponent<Text>().DOFade(0, 1.5f);
+    }
+    IEnumerator showintro()
+    {
+        yield return new WaitForSeconds(6);
+        intro.GetComponent<Image>().DOFade(1, 2f);
+        yield return new WaitForSeconds(6);
+        intro.GetComponent<Image>().DOFade(0, 2f);
     }
 }
