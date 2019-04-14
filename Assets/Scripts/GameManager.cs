@@ -15,7 +15,7 @@ public class GameManager
             return gamemanager;
         }
     }
-    public int HP = 10;
+    public int HP = 100;
     public int maxHP = 100;
     public int MP = 80;
     public int maxMP = 100;

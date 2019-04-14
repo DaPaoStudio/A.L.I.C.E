@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
             }
             if (GameManager.gameManager.MP >= 80 && istip == false)
             {
-                GameObject.Find("Canvas").SendMessage("tip", "Alice已为远行做好了准备");
+                GameObject.Find("Canvas").SendMessage("tiptwo", true);
                 istip = true;
             }
         }
@@ -175,6 +175,7 @@ public class Player : MonoBehaviour
             if (GameManager.gameManager.MP >= 80)
             {
                 op = GameManager.gameManager.loadscene("2.Map");
+                GameObject.Find("Canvas").SendMessage("tiptwo", false);
                 GameManager.gameManager.fishamount = (int)(0.7 * GameManager.gameManager.fishamount);
                 GameManager.gameManager.trashamount = (int)(1.3 * GameManager.gameManager.trashamount);
                 GameManager.gameManager.year += 5;               
