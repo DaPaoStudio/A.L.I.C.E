@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class MapManager : MonoBehaviour
 {
+    public GameObject text;
     private GameObject canvas;
     private GameObject whale;
     private AudioSource Audio;
@@ -15,6 +16,7 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        text.GetComponent<Text>().text = "当前位置：" + GameManager.gameManager.currentplace;
         Cursor.visible = true;
         isdo = false;
         canvas = GameObject.Find("Canvas");

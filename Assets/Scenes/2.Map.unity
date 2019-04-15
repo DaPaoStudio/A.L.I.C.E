@@ -743,6 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3878c63ea6ee9c7498b4054170074cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1517664226}
 --- !u!82 &783507779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1100,8 +1101,8 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\u52A0\u5DDE\u6E7E"
 --- !u!222 &1517664229

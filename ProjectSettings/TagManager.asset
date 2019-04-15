@@ -11,6 +11,7 @@ TagManager:
   - walll
   - walld
   - jellyfish
+  - trail
   layers:
   - Default
   - TransparentFX
