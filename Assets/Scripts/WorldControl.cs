@@ -70,10 +70,10 @@ public class WorldControl : MonoBehaviour
             mptip(-1);
             timer2 = 0;
         }
-        if (timer >= 4)
-            timer = 4;
+        if (timer >= 9)
+            timer = 9;
         if (timer2 >= 14)
-            timer =14;
+            timer2 =14;
         showHPandEN();
         if (GameManager.gameManager.HP <= 0 && deathplay == false)
         {
