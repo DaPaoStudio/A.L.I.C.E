@@ -77,7 +77,7 @@ public class WorldControl : MonoBehaviour
         showHPandEN();
         if (GameManager.gameManager.HP <= 0 && deathplay == false)
         {
-            StartCoroutine("die");
+            die();
             deathplay = true;
         }
         if (GameManager.gameManager.HP <= 10&&low==false)
@@ -87,16 +87,16 @@ public class WorldControl : MonoBehaviour
         }
     }
 
-    IEnumerator die()
+    void die()
     {
+        cando = false;
         audioSource.Play();
         AsyncOperation op = null;
         if (GameManager.gameManager.currentplace == "阿拉斯加湾" || GameManager.gameManager.currentplace == "夏威夷海" || GameManager.gameManager.currentplace == "加州湾")
             op = GameManager.gameManager.loadscene("5.Stranded End");
         else
             op = GameManager.gameManager.loadscene("6.Whale Fall End");
-        yield return new WaitForSeconds(4);
-        op.allowSceneActivation = true;
+        becomeblack(op);
     }
     void showHPandEN()
     {
@@ -216,7 +216,7 @@ public class WorldControl : MonoBehaviour
         if(p)
             showplace.GetComponent<Text>().DOFade(1, 2f);
         else
-            showplace.GetComponent<Text>().DOFade(0, 1.5f);
+            showplace.GetComponent<Text>().DOFade(0, 2f);
     }
     IEnumerator showintro()
     {

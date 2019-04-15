@@ -66,6 +66,11 @@ public class Player : MonoBehaviour
                 GameObject.Find("Canvas").SendMessage("tiptwo", true);
                 istip = true;
             }
+            if (GameManager.gameManager.MP < 80 && istip == true)
+            {
+                GameObject.Find("Canvas").SendMessage("tiptwo", false);
+                istip = false;
+            }
             playwait();
         }
     }
@@ -187,6 +192,7 @@ public class Player : MonoBehaviour
             AsyncOperation op = null;
             if (GameManager.gameManager.MP >= 80&&hasgone==false)
             {
+                GameObject.Find("Canvas").GetComponent<WorldControl>().cando = false;
                 op = GameManager.gameManager.loadscene("2.Map");
                 GameObject.Find("Canvas").SendMessage("tiptwo", false);
                 GameManager.gameManager.fishamount = (int)(0.7 * GameManager.gameManager.fishamount);
