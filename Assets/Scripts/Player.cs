@@ -211,7 +211,7 @@ public class Player : MonoBehaviour
                 else
                     GameObject.Find("Canvas").SendMessage("becomeblack",op);
             }
-            if(GameManager.gameManager.MP <= 80)
+             else if(GameManager.gameManager.MP <= 80)
             {
                 GameObject.Find("Canvas").SendMessage("tip","Alice还没有为远行做好准备");
             }

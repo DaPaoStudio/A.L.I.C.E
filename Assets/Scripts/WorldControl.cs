@@ -28,6 +28,7 @@ public class WorldControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         timer2 = 0;
         timer = 0;
         stoplow = false;
