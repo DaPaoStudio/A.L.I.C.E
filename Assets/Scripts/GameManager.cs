@@ -48,7 +48,7 @@ public class GameManager
     public bool over30 = false;
     public bool over50 = false;
     public List<string> we = new List<string>(new string[] { "也许，等待另一只鲸的出现，需要的不只是时间而已", "游戏设计 | Game Design：Dapao、BoringFish、Thirteen\n" +
-        "音乐音效 | Music&SFX: DaPao、Thirteen\n配音 | CV: Meredith、OliverK、Thirteen\n程序 | Program: BoringFish\n场景 | Art&Model: DaPao\n文案 | PlayWright: Thirteen",
+        "音乐音效 | Music&SFX: DaPao、Thirteen、JahaoZhang\n配音 | CV: Meredith、OliverK、Thirteen\n程序 | Program: BoringFish\n场景 | Art&Model: DaPao\n文案 | PlayWright: Thirteen",
          "指导老师 | Instructor：朱伟 WilsonZhu"});
 
 
