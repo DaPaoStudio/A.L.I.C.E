@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
                 GameObject.Find("Canvas").GetComponent<WorldControl>().cando = false;
                 op = GameManager.gameManager.loadscene("2.Map");
                 GameObject.Find("Canvas").SendMessage("tiptwo", false);
-                GameManager.gameManager.fishamount = (int)(0.7 * GameManager.gameManager.fishamount);
+                GameManager.gameManager.fishamount = (int)(0.8 * GameManager.gameManager.fishamount);
                 GameManager.gameManager.trashamount = (int)(1.5 * GameManager.gameManager.trashamount);
                 GameManager.gameManager.year += 5;
                 hasgone = true;
