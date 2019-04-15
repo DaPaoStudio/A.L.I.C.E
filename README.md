@@ -14,7 +14,7 @@ A.L.I.C.E是一款3D视角的休闲游戏，游戏讲述了Alice——一条52Hz
 
 Game Design: Dapao、BoringFish、Thirteen
 
-Music&SFX: DaPao、Thirteen
+Music&SFX: DaPao、Thirteen、JahaoZhang
 
 Program: BoringFish
 
