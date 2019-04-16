@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rigid;
     private AudioSource[] audioSources;
-    private float rotatespeed =120+GameManager.gameManager.mouse;
+    private float rotatespeed;
     private float maxspeed=10;
     private float movespeed = 1;
     private bool slowdown = true;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rotatespeed =3*GameManager.gameManager.mouse;
         waittime += Time.deltaTime;
         hasgone = false;
         if(GameManager.gameManager.currentplace!="加州湾")
