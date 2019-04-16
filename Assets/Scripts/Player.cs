@@ -18,12 +18,11 @@ public class Player : MonoBehaviour
     private bool beat;
     private bool particalplay = false;
     private bool hasgone;
-    private float waittime = 0;
+    private float waittime = 120;
     // Start is called before the first frame update
     void Start()
     {
         rotatespeed =3*GameManager.gameManager.mouse;
-        waittime += Time.deltaTime;
         hasgone = false;
         if(GameManager.gameManager.currentplace!="加州湾")
             GameManager.gameManager.MP -= 70;
@@ -38,6 +37,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        waittime += Time.deltaTime;
         //Debug.Log(rigid.velocity);
         if (GameObject.Find("Canvas").GetComponent<WorldControl>().cando)
         {
@@ -179,9 +179,9 @@ public class Player : MonoBehaviour
                     else
                     {
                         audioSources[2].clip = clip;
-                        audioSources[2].Play();
-                        waittime = 0;
+                        audioSources[2].Play();                     
                     }
+                    waittime = 0;
                     GameManager.gameManager.firsteattrash = true;
                 }
                 audioSources[3].clip = GameManager.gameManager.getclip(@"SFX/Crash");
@@ -230,8 +230,8 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
-                waittime = 0;
             }
+            waittime = 0;
             GameManager.gameManager.firstacc = true;
         }
         if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.HP<=50 && GameManager.gameManager.firstreducehp == false)
@@ -242,10 +242,10 @@ public class Player : MonoBehaviour
             else
             {
                 audioSources[2].clip = clip;
-                audioSources[2].Play();
-                waittime = 0;
+                audioSources[2].Play();               
             }
             GameManager.gameManager.firstreducehp = true;
+            waittime = 0;
         }
         if (GameManager.gameManager.currentplace != "加州湾" && GameManager.gameManager.HP <= 50 && GameManager.gameManager.firstreducehp == false)
         {
@@ -256,9 +256,9 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
-                waittime = 0;
             }
             GameManager.gameManager.firstreducehp = true;
+            waittime = 0;
         }
         if (GameManager.gameManager.MP >= 50 && GameManager.gameManager.over50 == false)
         {
@@ -268,10 +268,10 @@ public class Player : MonoBehaviour
             else
             {
                 audioSources[2].clip = clip;
-                audioSources[2].Play();
-                waittime = 0;
+                audioSources[2].Play();                
             }
             GameManager.gameManager.over50 = true;
+            waittime = 0;
         }
         if (GameManager.gameManager.MP >= 30 && GameManager.gameManager.over30 == false)
         {
@@ -281,10 +281,10 @@ public class Player : MonoBehaviour
             else
             {
                 audioSources[2].clip = clip;
-                audioSources[2].Play();
-                waittime = 0;
+                audioSources[2].Play();                
             }
             GameManager.gameManager.over30 = true;
+            waittime = 0;
         }
     }
     IEnumerator jinggeline(string linename)
@@ -297,8 +297,8 @@ public class Player : MonoBehaviour
         {
             audioSources[2].clip = clip;
             audioSources[2].Play();
-            waittime = 0;
         }
+        waittime = 0;
         if (linename== "在除加州湾以外的地区触发鲸歌并且在加州湾触发过")
             GameManager.gameManager.secondsong = true;
         if (linename == "进入加州湾第一次唱响鲸歌")
@@ -311,7 +311,7 @@ public class Player : MonoBehaviour
             audioSources[2].clip = GameManager.gameManager.toplay[0];
             audioSources[2].Play();
             waittime = 0;
-            GameManager.gameManager.toplay.Remove(GameManager.gameManager.toplay[0]);
+            GameManager.gameManager.toplay.RemoveAt(0);
         }
     }
     private void playwait()
@@ -324,9 +324,9 @@ public class Player : MonoBehaviour
             else
             {
                 audioSources[2].clip = clip;
-                audioSources[2].Play();
-                waittime = 0;
+                audioSources[2].Play();               
             }
+            waittime = 0;
             GameManager.gameManager.waitfirst = true;
         }
         if (waittime >= 120 && GameManager.gameManager.waitfirst == true&& GameManager.gameManager.waitsecond == false)
@@ -337,9 +337,9 @@ public class Player : MonoBehaviour
             else
             {
                 audioSources[2].clip = clip;
-                audioSources[2].Play();
-                waittime = 0;
+                audioSources[2].Play();                
             }
+            waittime = 0;
             GameManager.gameManager.waitsecond = true;
         }
         if (waittime >= 120 && GameManager.gameManager.waitfirst == true && GameManager.gameManager.waitsecond == true&& GameManager.gameManager.waitthird == false)
@@ -351,8 +351,8 @@ public class Player : MonoBehaviour
             {
                 audioSources[2].clip = clip;
                 audioSources[2].Play();
-                waittime = 0;
             }
+            waittime = 0;
             GameManager.gameManager.waitthird = true;
         }
         if (GameManager.gameManager.waitthird == true)
