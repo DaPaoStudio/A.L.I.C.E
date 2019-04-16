@@ -19,9 +19,11 @@ public class TitleManager : MonoBehaviour
     //private GameObject jelly1;
     //private GameObject jelly2;
     private GameObject presskey;
+    private GameObject alice;
     private float fadespeed;
     //private float movespeed;
     private bool isfade = true;
+    private bool aliceisfade = true;
     //private float jellyfishup;
     //private float jellyfishdown;
     //private bool isup = true;
@@ -48,7 +50,8 @@ public class TitleManager : MonoBehaviour
         //jellyfishup = jelly.transform.position.y + 40;
         //jellyfishdown = jelly.transform.position.y - 20;
         presskey = canvas.transform.Find("Press Any Key").gameObject;
-        fadespeed = 0.8f;
+        alice = canvas.transform.Find("ALICE").gameObject;
+        fadespeed = 0.3f;
         //movespeed = 5.0f;
         //bubbles = GameObject.FindGameObjectsWithTag("bubble");
         //fishes = GameObject.FindGameObjectsWithTag("fish");
@@ -63,6 +66,7 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         presskeymove();
+        alicemove();
         //jellyfishmove();
         //bubblesmove();
         //fishesmove();
@@ -107,7 +111,7 @@ public class TitleManager : MonoBehaviour
         if(isfade)
         {
             canvasGroup.alpha -= fadespeed * Time.deltaTime;
-            if (canvasGroup.alpha <= 0.1)
+            if (canvasGroup.alpha <= 0.25)
                 isfade = false;
         }
         else
@@ -115,6 +119,23 @@ public class TitleManager : MonoBehaviour
             canvasGroup.alpha += fadespeed * Time.deltaTime;
             if (canvasGroup.alpha >= 0.9)
                 isfade = true;
+        }
+    }
+
+    void alicemove()
+    {
+        CanvasGroup canvasGroup = alice.GetComponent<CanvasGroup>();
+        if (aliceisfade)
+        {
+            canvasGroup.alpha -= fadespeed * Time.deltaTime;
+            if (canvasGroup.alpha <= 0.25)
+                aliceisfade = false;
+        }
+        else
+        {
+            canvasGroup.alpha += fadespeed * Time.deltaTime;
+            if (canvasGroup.alpha >= 0.9)
+                aliceisfade = true;
         }
     }
     //void bubblesmove()

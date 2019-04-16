@@ -15,7 +15,7 @@ public class GameManager
             return gamemanager;
         }
     }
-    public float mouse=50f;
+    public float mouse=25f;
     public bool isposition = false;
     public bool waitfirst = false;
     public bool waitsecond = false;
