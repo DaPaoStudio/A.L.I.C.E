@@ -37,7 +37,7 @@ public class GameManager
     public List<string> isgone = new List<string>(new string[] { "jiazhouwan" });
     public List<string> currentplacelist = new List<string>(new string[] { "alasijia", "jiazhouwaihai", "xiaweiyi" });
     public string currentplace = "加州湾";
-    public List<string> dialogone = new List<string>(new string[] { "哦……她会不会很孤独？没有人应和她的歌声", "如果向全世界发言却没有人回应算不上孤独的话",
+    public List<string> dialogone = new List<string>(new string[] { "哦……他会不会很孤独？没有人应和他的歌声", "如果向全世界发言却没有人回应算不上孤独的话",
                   "我很难想象孤独这个词是形容什么的,，死亡吗？","那或许孤独比死亡更加可怕吧"});
     public bool dialogoneplayed = false;
     public bool firstacc = false;
@@ -47,7 +47,7 @@ public class GameManager
     public bool firstreducehp = false;
     public bool over30 = false;
     public bool over50 = false;
-    public List<string> we = new List<string>(new string[] { "也许，等待另一只鲸的出现，需要的不只是时间而已", "游戏设计 | Game Design：Dapao、BoringFish、Thirteen\n" +
+    public List<string> we = new List<string>(new string[] { "也许，等待另一只鲸的出现，需要的不只是时间而已", "游戏设计 | Game Design: Dapao、BoringFish、Thirteen\n" +
         "音乐音效 | Music&SFX: DaPao、Thirteen、JahaoZhang\n配音 | CV: Meredith、OliverK、Thirteen\n程序 | Program: BoringFish\n场景 | Art&Model: DaPao\n文案 | PlayWright: Thirteen",
          "指导老师 | Instructor：朱伟 WilsonZhu"});
 

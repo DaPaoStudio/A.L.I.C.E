@@ -36,7 +36,7 @@ public class TitleManager : MonoBehaviour
     private GameObject dialog;
     private bool isdo = false;
     private List<string> dialogs = new List<string>(new string[] {"孤独是永恒的","他像冰冷的深海海水","不论天空中是风和日丽还是狂风暴雨","如果你发出的声音谁也不能理解",
-       "--那么","你，会觉得孤独吗?","这是她的故事，也是他们的故事。\n\n 是渺小的人，与巨大的鲸的故事。"});
+       "--那么","你，会觉得孤独吗?","这是他的故事，也是他们的故事。\n\n 是渺小的人，与巨大的鲸的故事。"});
     // Start is called before the first frame update
     void Start()
     {

@@ -15,7 +15,7 @@ public class EndTwo : MonoBehaviour
     private string word1 = "也许长久的孤独，只是为了等待另一个同样的声音出现。\n就算发出的声音谁都不理解，也依然活着，唱着\n这份情感并非虚假。";
     private string word2 = "本游戏所叙述的故事根据真实事件改编：\n在现实当中，Alice的结局同样压抑——我们已经失去了Alice的踪迹，" +
         "\n不论是出于什么原因，是Alice死了，或是人类放弃了观察。\n不知何时能相见是比无法再相见更加残酷的刑罚，" +
-        "\n这个孤独的歌唱家再也没有听众，\n但我们都知道，她依然会唱着。";
+        "\n这个孤独的歌唱家再也没有听众，\n但我们都知道，他依然会唱着。";
     private string word3 = "于是我们希望Alice不是孤独的，我们希望大海的仙境只是美好与浪漫。\n我们已经做了太多出格的事情。" +
         "\n我们对大海倾泻着不该倾泻的物件，于是大海回报我们不那么美好的故事。\n鲸歌也许难以解析，但我们都明白一点：" +
         "\n如果不能够停止对海洋的肆意迫害，我们终将无法再听到这神秘空灵的歌声。";
@@ -66,7 +66,7 @@ public class EndTwo : MonoBehaviour
        // geqian.GetComponent<Text>().DOFade(0, 2f);
        // yield return new WaitForSeconds(5);
         Audio.Play();
-        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume = x, 0.25f, 3);
+        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume = x, 0.2f, 3);
         foreach (string p in GameManager.gameManager.we)
         {
             text.GetComponent<Text>().text = p;
@@ -84,7 +84,7 @@ public class EndTwo : MonoBehaviour
         yield return new WaitForSeconds(12);
         black.GetComponent<Image>().DOFade(1, 2.5f);
         yield return new WaitForSeconds(3);
-        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume = x, 1f, 10);
+        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume = x, 1f, 12);
         //word
         text.GetComponent<Text>().text = word1;
         text.GetComponent<Text>().fontSize = 36;

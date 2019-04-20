@@ -23,7 +23,7 @@ public class EndOne : MonoBehaviour
         "让一首勇气的赞歌提前结束的，往往是杂音。\n" +
         "是那些悬浮在海水中或沉积在淤泥里的杂音。\n" +
         "我们不知道Alice最终的结局是怎样的，仅仅是预想出了这样的压抑。";
-    private string word4 = "如果在现实中做出改变\nAlice会不会能够有力气\n等到理解她的鲸出现呢？";
+    private string word4 = "如果在现实中做出改变\nAlice会不会能够有力气\n等到理解他的鲸出现呢？";
     private string word5 = "Thank You For Playing";
     // Start is called before the first frame update
     void Start()
@@ -81,7 +81,7 @@ public class EndOne : MonoBehaviour
         //jingluo.GetComponent<Text>().DOFade(0, 2f);
         //yield return new WaitForSeconds(5);
         Audio.Play();
-        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume=x, 0.3f, 3);
+        DOTween.To(() => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume, x => GameObject.Find("Main Camera").GetComponent<AudioSource>().volume=x, 0.25f, 3);
         foreach(string p in GameManager.gameManager.we)
         {
             text.GetComponent<Text>().text = p;
