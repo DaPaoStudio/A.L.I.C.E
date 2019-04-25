@@ -260,6 +260,23 @@ public class Player : MonoBehaviour
             GameManager.gameManager.firstreducehp = true;
             waittime = 0;
         }
+        if (GameManager.gameManager.MP >= 30 && GameManager.gameManager.over30 == false)
+        {
+            AudioClip clip = GameManager.gameManager.getline("能量超过30");
+            if (audioSources[2].isPlaying)
+                GameManager.gameManager.toplay.Add(clip);
+            else
+            {
+                audioSources[2].clip = clip;
+                audioSources[2].Play();
+            }
+            GameManager.gameManager.over30 = true;
+            waittime = 0;
+        }
+        if (GameManager.gameManager.MP >= 40 && GameManager.gameManager.firstsonginjiazhou == false)
+        {
+            StartCoroutine("jinggeline", "进入加州湾第一次唱响鲸歌");
+        }
         if (GameManager.gameManager.MP >= 50 && GameManager.gameManager.over50 == false)
         {
             AudioClip clip = GameManager.gameManager.getline("能量超过50");
@@ -272,23 +289,14 @@ public class Player : MonoBehaviour
             }
             GameManager.gameManager.over50 = true;
             waittime = 0;
-        }
-        if (GameManager.gameManager.MP >= 30 && GameManager.gameManager.over30 == false)
-        {
-            AudioClip clip = GameManager.gameManager.getline("能量超过30");
-            if (audioSources[2].isPlaying)
-                GameManager.gameManager.toplay.Add(clip);
-            else
-            {
-                audioSources[2].clip = clip;
-                audioSources[2].Play();                
-            }
-            GameManager.gameManager.over30 = true;
-            waittime = 0;
-        }
+        }               
     }
     IEnumerator jinggeline(string linename)
     {
+        if (linename == "在除加州湾以外的地区触发鲸歌并且在加州湾触发过")
+            GameManager.gameManager.secondsong = true;
+        if (linename == "进入加州湾第一次唱响鲸歌")
+            GameManager.gameManager.firstsonginjiazhou = true;
         AudioClip clip = GameManager.gameManager.getline(linename);
         yield return new WaitForSeconds(10);
         if (audioSources[2].isPlaying)
@@ -298,11 +306,7 @@ public class Player : MonoBehaviour
             audioSources[2].clip = clip;
             audioSources[2].Play();
         }
-        waittime = 0;
-        if (linename== "在除加州湾以外的地区触发鲸歌并且在加州湾触发过")
-            GameManager.gameManager.secondsong = true;
-        if (linename == "进入加州湾第一次唱响鲸歌")
-            GameManager.gameManager.firstsonginjiazhou = true;
+        waittime = 0;       
     }
     private void playcliplist()
     {

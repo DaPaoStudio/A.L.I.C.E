@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class WorldControl : MonoBehaviour
 {
+    private AsyncOperation canleaoutop = null;
+    private bool canleaveout=false;
     private AudioSource audioSource;
     private GameObject canvas;
     private GameObject HP;
@@ -29,6 +31,7 @@ public class WorldControl : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        canleaveout = false;
         timer2 = 0;
         timer = 0;
         stoplow = false;
@@ -86,6 +89,7 @@ public class WorldControl : MonoBehaviour
             StartCoroutine("hplow");
             low = true;
         }
+        leaveout();
     }
 
     void die()
@@ -171,8 +175,10 @@ public class WorldControl : MonoBehaviour
     }
     public void showdialogone(AsyncOperation op)
     {
+        canleaoutop = op;
         stoplow = true;
         Tweener tw = black.GetComponent<Image>().DOFade(1, 3f);
+        canleaveout = true;
         tw.OnComplete(delegate { StartCoroutine("showdialog", op); });
     }
     IEnumerator showdialog(AsyncOperation op)
@@ -225,5 +231,17 @@ public class WorldControl : MonoBehaviour
         intro.GetComponent<Image>().DOFade(1, 2f);
         yield return new WaitForSeconds(6);
         intro.GetComponent<Image>().DOFade(0, 2f);
+    }
+    private void leaveout()
+    {
+        if (canleaveout)
+        {
+            if (Input.GetMouseButtonDown(0) && canleaoutop != null)
+            {
+                StopAllCoroutines();
+                Tweener tw = dialog.GetComponent<Text>().DOFade(0, 2f);
+                tw.OnComplete(delegate { canleaoutop.allowSceneActivation = true; });
+            }
+        }
     }
 }

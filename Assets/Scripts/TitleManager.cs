@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
+    AsyncOperation op = null;
+    private bool canleaveout = false;
     public GameObject value;
     public GameObject btnback;
     public GameObject mouseslider;
@@ -77,6 +79,7 @@ public class TitleManager : MonoBehaviour
             StartCoroutine("startgame");
             isdo = true;
         }
+        leaveout();
     }
 
     //void jellyfishmove()
@@ -163,10 +166,10 @@ public class TitleManager : MonoBehaviour
     IEnumerator startgame()
     {
         GameObject.Find("Main Camera").GetComponent<AudioSource>().enabled = false;
-        AudioSources[1].Play();
-        AsyncOperation op = null;
+        AudioSources[1].Play();       
         op = GameManager.gameManager.loadscene("1.California");
         black.GetComponent<Image>().DOFade(1, 4.5f);
+        canleaveout = true;
         yield return new WaitForSeconds(5);
         StartCoroutine("showdialog", op);
     }
@@ -207,5 +210,17 @@ public class TitleManager : MonoBehaviour
     {
         GameManager.gameManager.mouse = mouseslider.GetComponent<Slider>().value;
         value.GetComponent<Text>().text = mouseslider.GetComponent<Slider>().value.ToString();
+    }
+    private void leaveout()
+    {
+        if(canleaveout)
+        {
+            if (Input.GetMouseButtonDown(0) && op != null)
+            {
+                StopAllCoroutines();
+                Tweener tw = dialog.GetComponent<Text>().DOFade(0, 2f);
+                tw.OnComplete(delegate { op.allowSceneActivation = true; });                
+            }
+        }
     }
 }
