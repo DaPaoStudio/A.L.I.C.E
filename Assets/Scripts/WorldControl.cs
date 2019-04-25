@@ -26,6 +26,7 @@ public class WorldControl : MonoBehaviour
     private bool deathplay = false;
     private float timer ;
     public float timer2;
+    private GameObject leaveouttip;
   
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,8 @@ public class WorldControl : MonoBehaviour
         EN= canvas.transform.Find("EN").gameObject;
         hpt= transform.Find("hpt").gameObject;
         mpt= transform.Find("mpt").gameObject;
-        intro= transform.Find("intro").gameObject;
+        leaveouttip = transform.Find("leaveouttip").gameObject;
+        intro = transform.Find("intro").gameObject;
         showplace = GameObject.Find("showplace").gameObject;
         black = GameObject.Find("black").gameObject;
         hudtip = transform.Find("Text").gameObject;
@@ -182,7 +184,8 @@ public class WorldControl : MonoBehaviour
         tw.OnComplete(delegate { StartCoroutine("showdialog", op); });
     }
     IEnumerator showdialog(AsyncOperation op)
-    {      
+    {
+        leaveouttip.GetComponent<Text>().DOFade(1, 2f);
         foreach (string p in GameManager.gameManager.dialogone)
         {
             dialog.GetComponent<Text>().text = p;
@@ -239,6 +242,7 @@ public class WorldControl : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && canleaoutop != null)
             {
                 StopAllCoroutines();
+                leaveouttip.GetComponent<Text>().DOFade(0, 2f);
                 Tweener tw = dialog.GetComponent<Text>().DOFade(0, 2f);
                 tw.OnComplete(delegate { canleaoutop.allowSceneActivation = true; });
             }

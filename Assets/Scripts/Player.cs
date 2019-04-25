@@ -275,6 +275,12 @@ public class Player : MonoBehaviour
         }
         if (GameManager.gameManager.MP >= 40 && GameManager.gameManager.firstsonginjiazhou == false)
         {
+            if (audioSources[0].isPlaying == false)
+            {
+                int index = (int)Random.Range(1, 5f);
+                audioSources[0].clip = GameManager.gameManager.getclip(@"SFX/" + "Whale" + index.ToString());
+                audioSources[0].Play();
+            }
             StartCoroutine("jinggeline", "进入加州湾第一次唱响鲸歌");
         }
         if (GameManager.gameManager.MP >= 50 && GameManager.gameManager.over50 == false)

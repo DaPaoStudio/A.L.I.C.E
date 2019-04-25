@@ -37,6 +37,7 @@ public class TitleManager : MonoBehaviour
     private GameObject black;
     private GameObject dialog;
     private bool isdo = false;
+    private GameObject leaveouttip;
     private List<string> dialogs = new List<string>(new string[] {"孤独是永恒的","他像冰冷的深海海水","不论天空中是风和日丽还是狂风暴雨","如果你发出的声音谁也不能理解",
        "--那么","你，会觉得孤独吗?","这是他的故事，也是他们的故事。\n\n 是渺小的人，与巨大的鲸的故事。"});
     // Start is called before the first frame update
@@ -62,6 +63,7 @@ public class TitleManager : MonoBehaviour
         AudioSources[0].clip = Resources.Load(@"Audios/SFX/enterwater") as AudioClip;
         AudioSources[1].clip = Resources.Load(@"Audios/BGM/地图界面背景音") as AudioClip;
         black = canvas.transform.Find("black").gameObject;
+        leaveouttip = canvas.transform.Find("leaveouttip").gameObject;
     }
 
     // Update is called once per frame
@@ -169,8 +171,9 @@ public class TitleManager : MonoBehaviour
         AudioSources[1].Play();       
         op = GameManager.gameManager.loadscene("1.California");
         black.GetComponent<Image>().DOFade(1, 4.5f);
-        canleaveout = true;
+        canleaveout = true;       
         yield return new WaitForSeconds(5);
+        leaveouttip.GetComponent<Text>().DOFade(1, 2f);
         StartCoroutine("showdialog", op);
     }
     IEnumerator showdialog(AsyncOperation op)
@@ -218,6 +221,7 @@ public class TitleManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && op != null)
             {
                 StopAllCoroutines();
+                leaveouttip.GetComponent<Text>().DOFade(0, 2f);
                 Tweener tw = dialog.GetComponent<Text>().DOFade(0, 2f);
                 tw.OnComplete(delegate { op.allowSceneActivation = true; });                
             }
