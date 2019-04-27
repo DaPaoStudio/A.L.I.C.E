@@ -273,7 +273,7 @@ public class Player : MonoBehaviour
             GameManager.gameManager.over30 = true;
             waittime = 0;
         }
-        if (GameManager.gameManager.MP >= 40 && GameManager.gameManager.firstsonginjiazhou == false)
+        if (waittime >= 10 && GameManager.gameManager.firstsonginjiazhou == false)
         {
             if (audioSources[0].isPlaying == false)
             {
